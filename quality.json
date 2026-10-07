@@ -1,0 +1,119 @@
+{
+  "protected": [
+    ".gitattributes",
+    ".github/workflows/acceptance.yml",
+    ".gitignore",
+    "AGENTS.md",
+    "LICENSE",
+    "NOTICE",
+    "acceptance.json",
+    "docs/PROVENANCE.md",
+    "e2e.config.ts",
+    "knowledge/architecture.md",
+    "knowledge/contracts/booking-domain.md",
+    "knowledge/contracts/booking-storage.md",
+    "knowledge/contracts/booking-ui.md",
+    "knowledge/contracts/report-validation.md",
+    "knowledge/index.md",
+    "package-lock.json",
+    "package.json",
+    "schema/report-v1.schema.json",
+    "scripts/approval.mjs",
+    "scripts/kdd.mjs",
+    "scripts/probe-board.mjs",
+    "scripts/setup-kdd.mjs",
+    "scripts/validate-kdd.mjs",
+    "scripts/verify-quality.mjs",
+    "src/git.mjs",
+    "src/oracle.mjs",
+    "src/report-validator.mjs",
+    "src/subprocess.mjs",
+    "tests/approval.test.mjs",
+    "tests/bookings.e2e.ts",
+    "tests/domain.test.mjs",
+    "tests/environment.test.mjs",
+    "tests/fixtures/passed.report.json",
+    "tests/mutations.test.mjs",
+    "tests/report.adversarial.test.mjs",
+    "tests/report.functional.test.mjs",
+    "tests/server.test.mjs",
+    "tests/storage.test.mjs",
+    "tests/subprocess.test.mjs",
+    "tests/support/booking-oracle.mjs",
+    "tests/support/fixtures.mjs",
+    "tests/support/storage-oracle.mjs",
+    "tests/ui-oracle.test.mjs",
+    "tooling.json"
+  ],
+  "implementation": [
+    "example/booking-model.mjs",
+    "example/booking-storage.mjs",
+    "example/client.mjs",
+    "example/index.html",
+    "example/server.mjs"
+  ],
+  "pm": [
+    "README.md",
+    "docs/REVIEW.md",
+    "docs/OBJECTIVE.md",
+    "docs/VALIDATION.md",
+    "specs/CONTRACT-01-reservas.md",
+    "docs/reports/CONTRACT-01-REPORT.md",
+    "docs/reports/CONTRACT-01-EVIDENCE.json",
+    "CHANGELOG.md"
+  ],
+  "required_kinds": [
+    "functional",
+    "adversarial",
+    "ui"
+  ],
+  "checks": [
+    {
+      "name": "kdd-metadata",
+      "kind": "structural",
+      "argv": [
+        "node",
+        "scripts/validate-kdd.mjs",
+        "--metadata-only"
+      ],
+      "timeout": 60
+    },
+    {
+      "name": "functional",
+      "kind": "functional",
+      "argv": [
+        "node",
+        "--test",
+        "tests/report.functional.test.mjs",
+        "tests/domain.test.mjs",
+        "tests/storage.test.mjs",
+        "tests/subprocess.test.mjs",
+        "tests/approval.test.mjs",
+        "tests/environment.test.mjs",
+        "tests/server.test.mjs"
+      ],
+      "timeout": 60
+    },
+    {
+      "name": "adversarial",
+      "kind": "adversarial",
+      "argv": [
+        "node",
+        "--test",
+        "tests/report.adversarial.test.mjs",
+        "tests/mutations.test.mjs"
+      ],
+      "timeout": 60
+    },
+    {
+      "name": "ui",
+      "kind": "ui",
+      "argv": [
+        "node",
+        "--test",
+        "tests/ui-oracle.test.mjs"
+      ],
+      "timeout": 60
+    }
+  ]
+}

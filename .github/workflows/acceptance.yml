@@ -1,0 +1,86 @@
+name: KDD e2e acceptance
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+permissions:
+  contents: read
+  actions: read
+jobs:
+  acceptance:
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-24.04, windows-latest]
+    runs-on: ${{ matrix.os }}
+    timeout-minutes: 15
+    env:
+      KDD_QUALITY_APPROVED_REF: ${{ vars.KDD_QUALITY_APPROVED_REF }}
+      E2E_TELEMETRY_DISABLED: '1'
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          fetch-depth: 0
+          persist-credentials: false
+      - name: Require explicit reviewed baseline
+        shell: bash
+        run: |
+          if [[ ! "$KDD_QUALITY_APPROVED_REF" =~ ^[a-f0-9]{40}$ ]]; then
+            echo 'KDD_QUALITY_APPROVED_REF must contain the SHA explicitly approved by a human reviewer.' >&2
+            exit 1
+          fi
+          git cat-file -e "$KDD_QUALITY_APPROVED_REF^{commit}"
+          git merge-base --is-ancestor "$KDD_QUALITY_APPROVED_REF" HEAD
+      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020
+        with:
+          node-version: '24.16.0'
+          cache: npm
+      - uses: actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065
+        with:
+          python-version: '3.11'
+      - name: Check out trusted KDD tooling
+        uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          repository: MauricioPerera/KDD
+          ref: 224f722ba263e36f6aa4180a52b83fe41bc8d78e
+          path: .kdd-runtime/KDD
+          persist-credentials: false
+      - name: Compare contracts and oracles with approved baseline
+        shell: bash
+        run: python .kdd-runtime/KDD/scripts/validate_baseline.py --all --approved-ref "$KDD_QUALITY_APPROVED_REF"
+      - run: npm ci --ignore-scripts --no-audit --no-fund
+      - name: Install Chromium and host dependencies
+        if: runner.os == 'Linux'
+        run: node node_modules/playwright-core/cli.js install --with-deps chromium
+      - name: Install Chromium
+        if: runner.os == 'Windows'
+        run: npm run install:browser
+      - name: Run quality policy from independently approved Git commit
+        shell: bash
+        run: python .kdd-runtime/KDD/scripts/verify_quality.py --policy quality.json --approved-ref "$KDD_QUALITY_APPROVED_REF"
+      - name: Run reviewed project quality entry point
+        run: npm run verify:quality
+      - name: Run KDD Level 1 and declared commands
+        run: npm run validate:kdd
+      - name: Verify Board compatibility
+        run: npm run probe:board
+      - name: Authenticate any new KDD closure against the prior CI run
+        shell: bash
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+        run: |
+          python .kdd-runtime/KDD/scripts/verify_completion_runs.py \
+            --repository "$GITHUB_REPOSITORY" \
+            --current-run-id "$GITHUB_RUN_ID" \
+            --candidate-sha "$GITHUB_SHA" \
+            --base-sha "$KDD_QUALITY_APPROVED_REF" \
+            --workflow-path .github/workflows/acceptance.yml \
+            --workflow-name 'KDD e2e acceptance'
+      - name: Preserve reports, logs and traces
+        if: always()
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        with:
+          name: acceptance-${{ matrix.os }}-${{ github.sha }}
+          path: .e2e/
+          include-hidden-files: true
+          if-no-files-found: warn

@@ -1,0 +1,28 @@
+{
+  "name": "coworking-reservas-kdd",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "license": "Apache-2.0",
+  "engines": {
+    "node": ">=24.8.0"
+  },
+  "packageManager": "npm@11.13.0",
+  "scripts": {
+    "test:functional": "node --test tests/report.functional.test.mjs tests/domain.test.mjs tests/storage.test.mjs tests/subprocess.test.mjs tests/approval.test.mjs tests/environment.test.mjs tests/server.test.mjs",
+    "test:adversarial": "node --test tests/report.adversarial.test.mjs tests/mutations.test.mjs",
+    "test:ui": "node --test tests/ui-oracle.test.mjs",
+    "setup:kdd": "node scripts/setup-kdd.mjs",
+    "validate:kdd": "node scripts/validate-kdd.mjs",
+    "probe:board": "node scripts/probe-board.mjs",
+    "verify:quality": "node scripts/verify-quality.mjs",
+    "install:browser": "node node_modules/playwright-core/cli.js install chromium",
+    "start": "node example/server.mjs"
+  },
+  "devDependencies": {
+    "@e2e-dev/web": "0.12.0",
+    "ajv": "8.20.0",
+    "ajv-formats": "3.0.1",
+    "e2e": "0.17.0"
+  }
+}

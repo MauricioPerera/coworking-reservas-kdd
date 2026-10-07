@@ -1,0 +1,18 @@
+coworking-reservas-kdd
+
+The tests in the browser test structure and schema/report-v1.schema.json are derived from
+e2e, Copyright 2026 TesterArmy, Inc., licensed under Apache-2.0.
+https://github.com/tester-army/e2e
+Reference checkout: a3f0f9fd4d54215abd2709b5bd99e8262ec8bc44
+The schema was copied from the integrity-locked npm package e2e@0.17.0.
+
+This product includes software developed at TesterArmy, Inc.
+(https://tester.army).
+
+The external KDD tooling is Copyright Mauricio Perera and licensed under MIT.
+https://github.com/MauricioPerera/KDD
+Pinned revision: 224f722ba263e36f6aa4180a52b83fe41bc8d78e
+KDD is downloaded separately and is not vendored into this project.
+
+Acceptance integration derived from MauricioPerera/kdd-e2e-acceptance,
+commit 57852337604118c448fa9e07c93fbe8f15132d11, Apache-2.0.

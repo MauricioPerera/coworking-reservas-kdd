@@ -1,0 +1,360 @@
+{
+  "schemaVersion": "report-1",
+  "run": {
+    "id": "01a10d3a-5064-759c-8c0d-a7cc5985ba39",
+    "specVersion": "0.1",
+    "runner": {
+      "name": "e2e",
+      "version": "0.17.0"
+    },
+    "status": "passed",
+    "exitCode": 0,
+    "startedAt": "2026-10-05T18:01:28.362Z",
+    "finishedAt": "2026-10-05T18:01:32.269Z",
+    "project": {
+      "id": "dev.kdd.coworking.reservas",
+      "configDigest": "2e417c65dd2d78ea4a71d40403ac08dc5add8e9f6a7c07c6265a6545f53509cc"
+    },
+    "environment": {
+      "ci": true,
+      "trustNoticeShown": false,
+      "os": "win32 10.0.26200",
+      "arch": "x64",
+      "runtime": "node v24.16.0"
+    },
+    "vcs": {
+      "commit": "a3f0f9fd4d54215abd2709b5bd99e8262ec8bc44",
+      "branch": "main",
+      "dirty": false
+    },
+    "targets": [
+      {
+        "id": "web",
+        "index": 0,
+        "platform": "web",
+        "baseOrigin": "http://127.0.0.1:4271",
+        "environment": "test",
+        "engine": {
+          "name": "web",
+          "version": "0.12.0",
+          "spiVersion": 1
+        },
+        "capabilities": [
+          "actions",
+          "artifacts",
+          "browser",
+          "keyboard",
+          "location",
+          "observation",
+          "pointer",
+          "state"
+        ],
+        "artifactCapabilities": [
+          "screenshot",
+          "trace",
+          "video"
+        ],
+        "stateCapability": true
+      }
+    ],
+    "serialGroups": [],
+    "results": [
+      {
+        "id": "72ee7de7346d012a822e2e2772d33233cd92b68b3108151feb5d10abdb688699",
+        "testId": "tests/bookings.e2e.ts::reservas::creates%20a%20valid%20booking",
+        "kind": "test",
+        "declarationIndex": 1,
+        "titlePath": [
+          "reservas",
+          "creates a valid booking"
+        ],
+        "file": "tests/bookings.e2e.ts",
+        "source": {
+          "file": "tests/bookings.e2e.ts",
+          "line": 8,
+          "column": 3
+        },
+        "targetId": "web",
+        "platform": "web",
+        "agent": "default",
+        "repeat": 0,
+        "tags": [
+          "reservas"
+        ],
+        "selected": true,
+        "status": "passed",
+        "attempts": [
+          {
+            "id": "01a10d3a-54c8-79d9-819d-f49685993f3a",
+            "index": 0,
+            "status": "passed",
+            "startedAt": "2026-10-05T18:01:29.032Z",
+            "durationMs": 392,
+            "artifacts": [],
+            "secondaryErrors": [],
+            "cleanup": "complete",
+            "steps": []
+          }
+        ]
+      },
+      {
+        "id": "d4b045e39218c28b8188525f548a40662d710682689c423e10078850f284302e",
+        "testId": "tests/bookings.e2e.ts::reservas::rejects%20an%20invalid%20interval",
+        "kind": "test",
+        "declarationIndex": 2,
+        "titlePath": [
+          "reservas",
+          "rejects an invalid interval"
+        ],
+        "file": "tests/bookings.e2e.ts",
+        "source": {
+          "file": "tests/bookings.e2e.ts",
+          "line": 20,
+          "column": 3
+        },
+        "targetId": "web",
+        "platform": "web",
+        "agent": "default",
+        "repeat": 0,
+        "tags": [
+          "reservas"
+        ],
+        "selected": true,
+        "status": "passed",
+        "attempts": [
+          {
+            "id": "01a10d3a-5651-7b27-b098-19c79a381b7c",
+            "index": 0,
+            "status": "passed",
+            "startedAt": "2026-10-05T18:01:29.425Z",
+            "durationMs": 176,
+            "artifacts": [],
+            "secondaryErrors": [],
+            "cleanup": "complete",
+            "steps": []
+          }
+        ]
+      },
+      {
+        "id": "a453da0a53fc5e87bd27bf6055dc36821a031952397755478822cf0892794a2e",
+        "testId": "tests/bookings.e2e.ts::reservas::rejects%20overlapping%20bookings",
+        "kind": "test",
+        "declarationIndex": 3,
+        "titlePath": [
+          "reservas",
+          "rejects overlapping bookings"
+        ],
+        "file": "tests/bookings.e2e.ts",
+        "source": {
+          "file": "tests/bookings.e2e.ts",
+          "line": 25,
+          "column": 3
+        },
+        "targetId": "web",
+        "platform": "web",
+        "agent": "default",
+        "repeat": 0,
+        "tags": [
+          "reservas"
+        ],
+        "selected": true,
+        "status": "passed",
+        "attempts": [
+          {
+            "id": "01a10d3a-5702-7f0c-84f1-a17f2b7d90c5",
+            "index": 0,
+            "status": "passed",
+            "startedAt": "2026-10-05T18:01:29.602Z",
+            "durationMs": 386,
+            "artifacts": [],
+            "secondaryErrors": [],
+            "cleanup": "complete",
+            "steps": []
+          }
+        ]
+      },
+      {
+        "id": "d5c4919c90d3031d2162d0684436b879e08a6fff2be2bc60525b3875d1e3175d",
+        "testId": "tests/bookings.e2e.ts::reservas::allows%20adjacent%20intervals",
+        "kind": "test",
+        "declarationIndex": 4,
+        "titlePath": [
+          "reservas",
+          "allows adjacent intervals"
+        ],
+        "file": "tests/bookings.e2e.ts",
+        "source": {
+          "file": "tests/bookings.e2e.ts",
+          "line": 49,
+          "column": 3
+        },
+        "targetId": "web",
+        "platform": "web",
+        "agent": "default",
+        "repeat": 0,
+        "tags": [
+          "reservas"
+        ],
+        "selected": true,
+        "status": "passed",
+        "attempts": [
+          {
+            "id": "01a10d3a-5885-7fba-9d69-0de017ca49a4",
+            "index": 0,
+            "status": "passed",
+            "startedAt": "2026-10-05T18:01:29.989Z",
+            "durationMs": 1507,
+            "artifacts": [],
+            "secondaryErrors": [],
+            "cleanup": "complete",
+            "steps": []
+          }
+        ]
+      },
+      {
+        "id": "cd8187afdda914e4f961f305ee5ac3c32238dfb8e2a007f5d58bb69a99943c28",
+        "testId": "tests/bookings.e2e.ts::reservas::allows%20simultaneous%20bookings%20in%20different%20rooms",
+        "kind": "test",
+        "declarationIndex": 5,
+        "titlePath": [
+          "reservas",
+          "allows simultaneous bookings in different rooms"
+        ],
+        "file": "tests/bookings.e2e.ts",
+        "source": {
+          "file": "tests/bookings.e2e.ts",
+          "line": 78,
+          "column": 3
+        },
+        "targetId": "web",
+        "platform": "web",
+        "agent": "default",
+        "repeat": 0,
+        "tags": [
+          "reservas"
+        ],
+        "selected": true,
+        "status": "passed",
+        "attempts": [
+          {
+            "id": "01a10d3a-5e68-7fe9-a061-674b18194082",
+            "index": 0,
+            "status": "passed",
+            "startedAt": "2026-10-05T18:01:31.497Z",
+            "durationMs": 190,
+            "artifacts": [],
+            "secondaryErrors": [],
+            "cleanup": "complete",
+            "steps": []
+          }
+        ]
+      },
+      {
+        "id": "4900a1e1e76c3b3d500c3aaf5606f596238f05f1c20b821f823f2a32a8315ada",
+        "testId": "tests/bookings.e2e.ts::reservas::cancellation%20releases%20the%20interval",
+        "kind": "test",
+        "declarationIndex": 6,
+        "titlePath": [
+          "reservas",
+          "cancellation releases the interval"
+        ],
+        "file": "tests/bookings.e2e.ts",
+        "source": {
+          "file": "tests/bookings.e2e.ts",
+          "line": 86,
+          "column": 3
+        },
+        "targetId": "web",
+        "platform": "web",
+        "agent": "default",
+        "repeat": 0,
+        "tags": [
+          "reservas"
+        ],
+        "selected": true,
+        "status": "passed",
+        "attempts": [
+          {
+            "id": "01a10d3a-5f27-76f0-88ec-1234986c39b0",
+            "index": 0,
+            "status": "passed",
+            "startedAt": "2026-10-05T18:01:31.687Z",
+            "durationMs": 397,
+            "artifacts": [],
+            "secondaryErrors": [],
+            "cleanup": "complete",
+            "steps": []
+          }
+        ]
+      },
+      {
+        "id": "d3251d8812b2388f2f8453f55113a38d2e51974af4cbd287ab52511e1bd11449",
+        "testId": "tests/bookings.e2e.ts::reservas::persists%20bookings%20across%20reload",
+        "kind": "test",
+        "declarationIndex": 7,
+        "titlePath": [
+          "reservas",
+          "persists bookings across reload"
+        ],
+        "file": "tests/bookings.e2e.ts",
+        "source": {
+          "file": "tests/bookings.e2e.ts",
+          "line": 101,
+          "column": 3
+        },
+        "targetId": "web",
+        "platform": "web",
+        "agent": "default",
+        "repeat": 0,
+        "tags": [
+          "reservas"
+        ],
+        "selected": true,
+        "status": "passed",
+        "attempts": [
+          {
+            "id": "01a10d3a-60b5-7c39-8bad-12bca10cab96",
+            "index": 0,
+            "status": "passed",
+            "startedAt": "2026-10-05T18:01:32.085Z",
+            "durationMs": 110,
+            "artifacts": [],
+            "secondaryErrors": [],
+            "cleanup": "complete",
+            "steps": []
+          }
+        ]
+      }
+    ],
+    "errors": [],
+    "summary": {
+      "discovered": 7,
+      "selected": 7,
+      "executed": 7,
+      "passed": 7,
+      "failed": 0,
+      "interrupted": 0,
+      "flaky": 0,
+      "skipped": 0
+    },
+    "limits": {
+      "maxAgentContextBytes": 16384,
+      "maxLedgerBytes": 8192,
+      "maxObservationBytes": 262144,
+      "maxEventsPerStep": 1000,
+      "maxModelTokensPerCall": 64000
+    },
+    "usage": {
+      "discoveredResults": 7,
+      "maxAgentContextBytes": 0,
+      "maxLedgerBytes": 0,
+      "maxObservationBytes": 0,
+      "artifactBytes": 0,
+      "downloads": 0,
+      "events": 0,
+      "modelTokens": 0,
+      "maxModelCallsInStep": 0,
+      "maxActionStepsInStep": 0
+    }
+  }
+}

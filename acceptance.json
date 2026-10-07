@@ -1,0 +1,86 @@
+{
+  "schemaVersion": "kdd-e2e-acceptance-1",
+  "projectId": "dev.kdd.coworking.reservas",
+  "contract": "knowledge/contracts/booking-ui.md",
+  "testFiles": [
+    "tests/bookings.e2e.ts"
+  ],
+  "timeoutMs": 24000,
+  "expectedCases": [
+    {
+      "file": "tests/bookings.e2e.ts",
+      "targetId": "web",
+      "titlePath": [
+        "reservas",
+        "creates a valid booking"
+      ]
+    },
+    {
+      "file": "tests/bookings.e2e.ts",
+      "targetId": "web",
+      "titlePath": [
+        "reservas",
+        "rejects an invalid interval"
+      ]
+    },
+    {
+      "file": "tests/bookings.e2e.ts",
+      "targetId": "web",
+      "titlePath": [
+        "reservas",
+        "rejects overlapping bookings"
+      ]
+    },
+    {
+      "file": "tests/bookings.e2e.ts",
+      "targetId": "web",
+      "titlePath": [
+        "reservas",
+        "allows adjacent intervals"
+      ]
+    },
+    {
+      "file": "tests/bookings.e2e.ts",
+      "targetId": "web",
+      "titlePath": [
+        "reservas",
+        "allows simultaneous bookings in different rooms"
+      ]
+    },
+    {
+      "file": "tests/bookings.e2e.ts",
+      "targetId": "web",
+      "titlePath": [
+        "reservas",
+        "cancellation releases the interval"
+      ]
+    },
+    {
+      "file": "tests/bookings.e2e.ts",
+      "targetId": "web",
+      "titlePath": [
+        "reservas",
+        "persists bookings across reload"
+      ]
+    }
+  ],
+  "inputFiles": [
+    "acceptance.json",
+    "e2e.config.ts",
+    "package.json",
+    "package-lock.json",
+    "schema/report-v1.schema.json",
+    "src/report-validator.mjs",
+    "src/oracle.mjs",
+    "src/subprocess.mjs",
+    "src/git.mjs",
+    "tests/ui-oracle.test.mjs",
+    "tests/bookings.e2e.ts",
+    "knowledge/contracts/booking-ui.md",
+    "example/booking-model.mjs",
+    "example/booking-storage.mjs",
+    "example/client.mjs",
+    "example/index.html",
+    "example/server.mjs"
+  ]
+}

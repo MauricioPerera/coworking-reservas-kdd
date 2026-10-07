@@ -1,0 +1,17 @@
+<!doctype html>
+<html lang="en">
+<meta charset="utf-8">
+<title>KDD e2e acceptance example</title>
+<h1>Todos</h1>
+<label for="new-todo">New todo</label>
+<input id="new-todo">
+<button id="add">Add</button>
+<div role="tablist" aria-label="Filter">
+  <button role="tab" aria-selected="true" data-filter="all">All</button>
+  <button role="tab" aria-selected="false" data-filter="open">Open</button>
+  <button role="tab" aria-selected="false" data-filter="done">Done</button>
+</div>
+<ul id="list" data-testid="todo-list"></ul>
+<output role="status" aria-label="Remaining"></output>
+<script type="module" src="/client.mjs"></script>
+</html>

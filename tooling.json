@@ -1,0 +1,8 @@
+{
+  "kdd": {
+    "repository": "https://github.com/MauricioPerera/KDD.git",
+    "commit": "224f722ba263e36f6aa4180a52b83fe41bc8d78e"
+  },
+  "referenceE2eCommit": "a3f0f9fd4d54215abd2709b5bd99e8262ec8bc44",
+  "approvalEnvironmentVariable": "KDD_QUALITY_APPROVED_REF"
+}
