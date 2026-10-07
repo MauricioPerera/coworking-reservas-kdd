@@ -1,0 +1,387 @@
+{
+  "schema_version": 1,
+  "spec": "specs/CONTRACT-02-idiomas.md",
+  "state": "verified_in_ci",
+  "ci": {
+    "run_url": "https://github.com/MauricioPerera/coworking-reservas-kdd/actions/runs/37689121256",
+    "head_sha": "3b721cbcc9e2a5f6bcda709b58648ca3716487c1",
+    "run_attempt": 2
+  },
+  "approved_baseline": "3b721cbcc9e2a5f6bcda709b58648ca3716487c1",
+  "human_approval": {
+    "source": "Explicit user reply to the full SHA and request to verify CI and merge only after successful checks in this chat",
+    "response": "Adelante"
+  },
+  "criteria": {
+    "AC-1": {
+      "status": "verified_in_ci",
+      "evidence": "34 checks de idiomas PASS, incluidos catálogos de 49 claves completas, etiquetas accesibles, mensajes y plurales; https://github.com/MauricioPerera/coworking-reservas-kdd/actions/runs/37689121256"
+    },
+    "AC-2": {
+      "status": "verified_in_ci",
+      "evidence": "21 flujos PASS por ejecución: siete en es-MX, siete en en-US y siete en pt-BR; diez reportes de idiomas auditados; https://github.com/MauricioPerera/coworking-reservas-kdd/actions/runs/37689121256"
+    },
+    "AC-3": {
+      "status": "verified_in_ci",
+      "evidence": "Cambiar idioma conserva el JSON guardado, títulos, borrador, sala y filtro en el oráculo de idiomas; https://github.com/MauricioPerera/coworking-reservas-kdd/actions/runs/37689121256"
+    },
+    "AC-4": {
+      "status": "verified_in_ci",
+      "evidence": "Cada idioma conserva reservas y preferencia después de recarga y reinicio real de Chromium con perfil persistente; https://github.com/MauricioPerera/coworking-reservas-kdd/actions/runs/37689121256"
+    },
+    "AC-5": {
+      "status": "verified_in_ci",
+      "evidence": "Fechas de agenda con formato es-MX, en-US y pt-BR, sin cambios de fecha en Los Ángeles, UTC y Auckland ni alteración del almacenamiento; https://github.com/MauricioPerera/coworking-reservas-kdd/actions/runs/37689121256"
+    },
+    "AC-6": {
+      "status": "verified_in_ci",
+      "evidence": "Fallback, preferencia no guardable, corrupción intacta y escritura de reservas fallida comprobados sin anunciar éxito indebido; https://github.com/MauricioPerera/coworking-reservas-kdd/actions/runs/37689121256"
+    },
+    "AC-7": {
+      "status": "verified_in_ci",
+      "evidence": "Móvil de 390 px en tres idiomas PASS; 35 funcionales, 49 adversariales, cinco mutantes previos, siete casos originales y KDD Board PASS; https://github.com/MauricioPerera/coworking-reservas-kdd/actions/runs/37689121256"
+    },
+    "AC-8": {
+      "status": "verified_in_ci",
+      "evidence": "docs/I18N-IMPACT.md registra código, controles, cobertura, tiempos y almacenamiento; este reporte añade tiempos reales de CI y hashes auditados; https://github.com/MauricioPerera/coworking-reservas-kdd/actions/runs/37689121256"
+    },
+    "CI-1": {
+      "status": "verified_in_ci",
+      "evidence": "https://github.com/MauricioPerera/coworking-reservas-kdd/actions/runs/37689121256"
+    }
+  },
+  "artifacts": [
+    {
+      "platform": "ubuntu-24.04",
+      "id": 11515773079,
+      "name": "acceptance-ubuntu-24.04-3b721cbcc9e2a5f6bcda709b58648ca3716487c1",
+      "digest": "sha256:7502c9b42f8fa9584c954036a95e771c8ead8c67b119316f98a92c08d5afc655",
+      "digest_source": "GitHub Actions API; archive digest was not independently recomputed",
+      "acceptance_runs": 6,
+      "cases_per_run": 7,
+      "locale_runs": 5,
+      "locale_cases_per_run": 34,
+      "board_verified": true,
+      "checked_reports": [
+        {
+          "directory": "31837e5c-da48-4a08-b542-c6d3c788398a",
+          "run_id": "01a11882-3697-748c-8d43-12e4763f36ad",
+          "report_sha256": "f81baf00dfb723221d0a59f384e0ebda24fb601db4f66abf9f74f202df05ef6d",
+          "ui_tests": 7
+        },
+        {
+          "directory": "390faaf8-3d8e-42c6-bc10-f543d92fe4c1",
+          "run_id": "01a11883-5073-761b-8f57-2d486c8de13e",
+          "report_sha256": "f977f0c3aa3a330862d95f2e7fe0c903d62cfbd60d938aa383f5171bd2cdc1cf",
+          "ui_tests": 7
+        },
+        {
+          "directory": "7067a6cc-5050-4ae8-86f7-b96a73f696b5",
+          "run_id": "01a11882-c9de-7844-a351-19e71a3bcca6",
+          "report_sha256": "3242af82f4906129b88687aaca7f81c61af1c636492ea8bbf88b045eac019eae",
+          "ui_tests": 7
+        },
+        {
+          "directory": "8e974666-276a-4b24-87b3-c3e6fe4cb069",
+          "run_id": "01a11882-849f-73de-b552-7b294d341562",
+          "report_sha256": "c92dc65fae6c39b6035d193f0f68ad9a4c89ab595edec9fffa99aee48824b211",
+          "ui_tests": 7
+        },
+        {
+          "directory": "db33e34a-33a4-45ca-bd1a-0bc4f3e535d7",
+          "run_id": "01a11881-f22e-7f95-ac29-72d2696d30b8",
+          "report_sha256": "fb3e371e87534fca7652b2fd62cf7a242824e9ace93d193df945691eeb4f7558",
+          "ui_tests": 7
+        },
+        {
+          "directory": "ffe5138d-0292-4680-9941-3ceeee87c94d",
+          "run_id": "01a11883-3b85-7937-8d7b-d4fecf5fa535",
+          "report_sha256": "9873a0a1eba88745dfcef36801ad0867f0287b46499785c34607a143d66a5c24",
+          "ui_tests": 7
+        }
+      ],
+      "checked_locale_reports": [
+        {
+          "directory": "6775a001-c071-4d74-a477-aaed0a5ee6e0",
+          "report_sha256": "0732f19a36cb814bd6f3968ff1ec3e026391942f69d5fbb180ec149d8144aa2c",
+          "cases": 34,
+          "matrix_cases": 21,
+          "extra_cases": 13,
+          "duration_ms": 11037,
+          "screenshots_sha256": {
+            "es-desktop.png": "1c78c5063cdd0b52347400cc43a16a008d25e305fbdd194606a7105d7bbbd9f1",
+            "es-mobile.png": "83508ecb1d45eb6137e6b23b4c307c4f9a627afcc1f3a0e52d1e949269b6fe9c",
+            "en-desktop.png": "92e121cd343f90c6e2235360d40a17571c725f0e613cf36515e02425f52d5ba7",
+            "en-mobile.png": "6a37fbf795ec4421572e03f19d1f2d26324d9219ceb70b9f42a77e747e5edc82",
+            "pt-desktop.png": "acb06787d8ccb2bb25017bbd1cbb8bf5edfa9718a0a6c9f26dc941c40b1f69d4",
+            "pt-mobile.png": "d6e84ea5721f48300190c2dd29d5fb17f786c039861d6c4119ed0c219699448c"
+          }
+        },
+        {
+          "directory": "9b201fe0-ebd3-4971-bcaf-979939d62a3c",
+          "report_sha256": "f5b488b58832a5a1b0670ef8a603cd74e5306fdc4adab24917aaa5ef8fbdcd4a",
+          "cases": 34,
+          "matrix_cases": 21,
+          "extra_cases": 13,
+          "duration_ms": 9723,
+          "screenshots_sha256": {
+            "es-desktop.png": "1c78c5063cdd0b52347400cc43a16a008d25e305fbdd194606a7105d7bbbd9f1",
+            "es-mobile.png": "83508ecb1d45eb6137e6b23b4c307c4f9a627afcc1f3a0e52d1e949269b6fe9c",
+            "en-desktop.png": "92e121cd343f90c6e2235360d40a17571c725f0e613cf36515e02425f52d5ba7",
+            "en-mobile.png": "6a37fbf795ec4421572e03f19d1f2d26324d9219ceb70b9f42a77e747e5edc82",
+            "pt-desktop.png": "acb06787d8ccb2bb25017bbd1cbb8bf5edfa9718a0a6c9f26dc941c40b1f69d4",
+            "pt-mobile.png": "d6e84ea5721f48300190c2dd29d5fb17f786c039861d6c4119ed0c219699448c"
+          }
+        },
+        {
+          "directory": "9c613fbb-0f12-4e8a-baff-b37350b79a56",
+          "report_sha256": "8ff552825615e57f0e0d1263f2edadb009cd3f0acff6e3c4fe77130ab3631d86",
+          "cases": 34,
+          "matrix_cases": 21,
+          "extra_cases": 13,
+          "duration_ms": 9235,
+          "screenshots_sha256": {
+            "es-desktop.png": "1c78c5063cdd0b52347400cc43a16a008d25e305fbdd194606a7105d7bbbd9f1",
+            "es-mobile.png": "83508ecb1d45eb6137e6b23b4c307c4f9a627afcc1f3a0e52d1e949269b6fe9c",
+            "en-desktop.png": "92e121cd343f90c6e2235360d40a17571c725f0e613cf36515e02425f52d5ba7",
+            "en-mobile.png": "6a37fbf795ec4421572e03f19d1f2d26324d9219ceb70b9f42a77e747e5edc82",
+            "pt-desktop.png": "acb06787d8ccb2bb25017bbd1cbb8bf5edfa9718a0a6c9f26dc941c40b1f69d4",
+            "pt-mobile.png": "d6e84ea5721f48300190c2dd29d5fb17f786c039861d6c4119ed0c219699448c"
+          }
+        },
+        {
+          "directory": "ab2dd2dc-c307-464a-aa37-202ab9474048",
+          "report_sha256": "d119cfcbffcafc1a1a88ab382666021a20ced023bf82cbc15df6c5beffdae298",
+          "cases": 34,
+          "matrix_cases": 21,
+          "extra_cases": 13,
+          "duration_ms": 9083,
+          "screenshots_sha256": {
+            "es-desktop.png": "1c78c5063cdd0b52347400cc43a16a008d25e305fbdd194606a7105d7bbbd9f1",
+            "es-mobile.png": "83508ecb1d45eb6137e6b23b4c307c4f9a627afcc1f3a0e52d1e949269b6fe9c",
+            "en-desktop.png": "92e121cd343f90c6e2235360d40a17571c725f0e613cf36515e02425f52d5ba7",
+            "en-mobile.png": "6a37fbf795ec4421572e03f19d1f2d26324d9219ceb70b9f42a77e747e5edc82",
+            "pt-desktop.png": "acb06787d8ccb2bb25017bbd1cbb8bf5edfa9718a0a6c9f26dc941c40b1f69d4",
+            "pt-mobile.png": "d6e84ea5721f48300190c2dd29d5fb17f786c039861d6c4119ed0c219699448c"
+          }
+        },
+        {
+          "directory": "cb70eb7c-19ec-498f-b0aa-ecd462e53146",
+          "report_sha256": "4911dced62a6b94e853557d63cf56c002e4604f0f227f96f7ea00fb5eb6e34fb",
+          "cases": 34,
+          "matrix_cases": 21,
+          "extra_cases": 13,
+          "duration_ms": 9189,
+          "screenshots_sha256": {
+            "es-desktop.png": "1c78c5063cdd0b52347400cc43a16a008d25e305fbdd194606a7105d7bbbd9f1",
+            "es-mobile.png": "83508ecb1d45eb6137e6b23b4c307c4f9a627afcc1f3a0e52d1e949269b6fe9c",
+            "en-desktop.png": "92e121cd343f90c6e2235360d40a17571c725f0e613cf36515e02425f52d5ba7",
+            "en-mobile.png": "6a37fbf795ec4421572e03f19d1f2d26324d9219ceb70b9f42a77e747e5edc82",
+            "pt-desktop.png": "acb06787d8ccb2bb25017bbd1cbb8bf5edfa9718a0a6c9f26dc941c40b1f69d4",
+            "pt-mobile.png": "d6e84ea5721f48300190c2dd29d5fb17f786c039861d6c4119ed0c219699448c"
+          }
+        }
+      ]
+    },
+    {
+      "platform": "windows-latest",
+      "id": 11516425635,
+      "name": "acceptance-windows-latest-3b721cbcc9e2a5f6bcda709b58648ca3716487c1",
+      "digest": "sha256:4aa8a7eef0558bd9c23fdd44982672ff06c37d91f4dad839a5c5227b6a6bb0f1",
+      "digest_source": "GitHub Actions API; archive digest was not independently recomputed",
+      "acceptance_runs": 6,
+      "cases_per_run": 7,
+      "locale_runs": 5,
+      "locale_cases_per_run": 34,
+      "board_verified": true,
+      "checked_reports": [
+        {
+          "directory": "1885aa29-206a-4b8c-b581-696e65cddeca",
+          "run_id": "01a11884-a009-7c35-b4d8-d515c558d5be",
+          "report_sha256": "b2238f015528effff648b1db762fd87d6b30e05f620a8a59f979259b3e2597a2",
+          "ui_tests": 7
+        },
+        {
+          "directory": "1bdfb2f9-c820-4c67-8427-b3961669fab9",
+          "run_id": "01a11883-ec19-7dbd-a49f-8b33c68d7788",
+          "report_sha256": "c9d1384ff87a634ffb98bf81a24f1430ac4d2d0dd210d5b0b7df9bb38d9ace26",
+          "ui_tests": 7
+        },
+        {
+          "directory": "3261647e-a6f1-440c-b905-a543d545f421",
+          "run_id": "01a11883-6073-7cef-a257-6fceb0b4a9a0",
+          "report_sha256": "1cbd85bdf7311a79d7ec451632ddd2af157977df65f16d6d81dfa6fa16a2086c",
+          "ui_tests": 7
+        },
+        {
+          "directory": "835a6786-877c-4c37-926b-e3ed9e703f29",
+          "run_id": "01a11882-50fc-75c0-ac0d-5cb9c3c72da0",
+          "report_sha256": "37801365783b562dfaf33555b457894d18149e70f3dc3d2f2358ca0cdcd848e8",
+          "ui_tests": 7
+        },
+        {
+          "directory": "a1087e2c-40d2-42e0-a252-8951546e8242",
+          "run_id": "01a11884-c2bf-760a-9029-080d77aafa15",
+          "report_sha256": "7148507f53b884a110bcd68145b54cee80b84042f4805a21ed7a7b937f7c14a1",
+          "ui_tests": 7
+        },
+        {
+          "directory": "b48a49bb-5436-4312-bbc6-a734fcb9bea7",
+          "run_id": "01a11882-ce64-7187-84ab-7dfa65b89c7e",
+          "report_sha256": "8b055db22ec731818763c6d31d63cc7c346f70ee33e910976481f4393d3d4b20",
+          "ui_tests": 7
+        }
+      ],
+      "checked_locale_reports": [
+        {
+          "directory": "14fcaead-f16d-44cf-ac14-6889a7e4f90f",
+          "report_sha256": "b3d0e957103b8add0a276dee191ce907153f73b0019059c3523326f43cc33a2d",
+          "cases": 34,
+          "matrix_cases": 21,
+          "extra_cases": 13,
+          "duration_ms": 14056,
+          "screenshots_sha256": {
+            "es-desktop.png": "480d13ff7d04f52b64fd1784f3ac04441115c6755fcdd5d17869c7ffcfe22182",
+            "es-mobile.png": "eb83639ce868dba951173ef2e0e5e5a204ef7e948d75559d0147e5154b5be184",
+            "en-desktop.png": "e21d831147d44214c6aafc75c08bda54aa1d031e2aab28d2f360e7bb39d85fef",
+            "en-mobile.png": "2de35a95e04636b4c6b4f1c70fc66f7fbba7f3ec1f4d9593a71363db1e6cd753",
+            "pt-desktop.png": "3d2c380d467c7ff454a4f765c3ae716114b445f8c8ea434f5ee0c39bffd0288b",
+            "pt-mobile.png": "d754c4c4e514142a05a623934a88332f6c376586647c422714b1d753afe196b7"
+          }
+        },
+        {
+          "directory": "3be5e1af-f7e2-4b94-8129-ba03e5414d51",
+          "report_sha256": "2ad837d5918ee78a2beda336571d3665c2eb770fe94f33180135fac04626e7a0",
+          "cases": 34,
+          "matrix_cases": 21,
+          "extra_cases": 13,
+          "duration_ms": 14086,
+          "screenshots_sha256": {
+            "es-desktop.png": "480d13ff7d04f52b64fd1784f3ac04441115c6755fcdd5d17869c7ffcfe22182",
+            "es-mobile.png": "eb83639ce868dba951173ef2e0e5e5a204ef7e948d75559d0147e5154b5be184",
+            "en-desktop.png": "e21d831147d44214c6aafc75c08bda54aa1d031e2aab28d2f360e7bb39d85fef",
+            "en-mobile.png": "2de35a95e04636b4c6b4f1c70fc66f7fbba7f3ec1f4d9593a71363db1e6cd753",
+            "pt-desktop.png": "3d2c380d467c7ff454a4f765c3ae716114b445f8c8ea434f5ee0c39bffd0288b",
+            "pt-mobile.png": "d754c4c4e514142a05a623934a88332f6c376586647c422714b1d753afe196b7"
+          }
+        },
+        {
+          "directory": "81f04f02-7cae-4c1d-9b83-f87341d9b360",
+          "report_sha256": "b68e9ab328865df3799c46eb2fbdca162e929c4ddbfb1ddecc4bbcd07ff4c80e",
+          "cases": 34,
+          "matrix_cases": 21,
+          "extra_cases": 13,
+          "duration_ms": 14522,
+          "screenshots_sha256": {
+            "es-desktop.png": "480d13ff7d04f52b64fd1784f3ac04441115c6755fcdd5d17869c7ffcfe22182",
+            "es-mobile.png": "eb83639ce868dba951173ef2e0e5e5a204ef7e948d75559d0147e5154b5be184",
+            "en-desktop.png": "e21d831147d44214c6aafc75c08bda54aa1d031e2aab28d2f360e7bb39d85fef",
+            "en-mobile.png": "2de35a95e04636b4c6b4f1c70fc66f7fbba7f3ec1f4d9593a71363db1e6cd753",
+            "pt-desktop.png": "3d2c380d467c7ff454a4f765c3ae716114b445f8c8ea434f5ee0c39bffd0288b",
+            "pt-mobile.png": "d754c4c4e514142a05a623934a88332f6c376586647c422714b1d753afe196b7"
+          }
+        },
+        {
+          "directory": "937a7458-c619-43b3-a14d-85a796f28dc0",
+          "report_sha256": "155ae35fc1ef85b8479969f2924aa2000a1c2302645d1d1e8d038bc26ff212c3",
+          "cases": 34,
+          "matrix_cases": 21,
+          "extra_cases": 13,
+          "duration_ms": 15084,
+          "screenshots_sha256": {
+            "es-desktop.png": "480d13ff7d04f52b64fd1784f3ac04441115c6755fcdd5d17869c7ffcfe22182",
+            "es-mobile.png": "eb83639ce868dba951173ef2e0e5e5a204ef7e948d75559d0147e5154b5be184",
+            "en-desktop.png": "e21d831147d44214c6aafc75c08bda54aa1d031e2aab28d2f360e7bb39d85fef",
+            "en-mobile.png": "2de35a95e04636b4c6b4f1c70fc66f7fbba7f3ec1f4d9593a71363db1e6cd753",
+            "pt-desktop.png": "3d2c380d467c7ff454a4f765c3ae716114b445f8c8ea434f5ee0c39bffd0288b",
+            "pt-mobile.png": "d754c4c4e514142a05a623934a88332f6c376586647c422714b1d753afe196b7"
+          }
+        },
+        {
+          "directory": "d02bbe44-c859-4d62-a134-fb3f0609af3f",
+          "report_sha256": "43e6cbcc50f801fb8bc787983ec3a3faa99dc090dc2ad2172ee66ee052273d95",
+          "cases": 34,
+          "matrix_cases": 21,
+          "extra_cases": 13,
+          "duration_ms": 14608,
+          "screenshots_sha256": {
+            "es-desktop.png": "480d13ff7d04f52b64fd1784f3ac04441115c6755fcdd5d17869c7ffcfe22182",
+            "es-mobile.png": "eb83639ce868dba951173ef2e0e5e5a204ef7e948d75559d0147e5154b5be184",
+            "en-desktop.png": "e21d831147d44214c6aafc75c08bda54aa1d031e2aab28d2f360e7bb39d85fef",
+            "en-mobile.png": "2de35a95e04636b4c6b4f1c70fc66f7fbba7f3ec1f4d9593a71363db1e6cd753",
+            "pt-desktop.png": "3d2c380d467c7ff454a4f765c3ae716114b445f8c8ea434f5ee0c39bffd0288b",
+            "pt-mobile.png": "d754c4c4e514142a05a623934a88332f6c376586647c422714b1d753afe196b7"
+          }
+        }
+      ]
+    }
+  ],
+  "artifact_audit": {
+    "checked_at": "2026-10-07T22:43:18.428Z",
+    "reports": 12,
+    "locale_reports": 10,
+    "input_files": 19,
+    "locale_input_files": 10,
+    "locale_tests_per_run": 34,
+    "report_hashes_verified": true,
+    "input_hashes_match_cited_commit": true,
+    "board_hashes_match_cited_commit": true,
+    "authenticated_run_and_jobs": true
+  },
+  "language_locales": {
+    "es": "es-MX",
+    "en": "en-US",
+    "pt": "pt-BR"
+  },
+  "validation_timings": [
+    {
+      "platform": "ubuntu-24.04",
+      "observations": 5,
+      "report_interval_seconds": {
+        "min": 9.083,
+        "max": 11.037,
+        "mean": 9.6534
+      }
+    },
+    {
+      "platform": "windows-latest",
+      "observations": 5,
+      "report_interval_seconds": {
+        "min": 14.056,
+        "max": 15.084,
+        "mean": 14.471200000000001
+      }
+    }
+  ],
+  "implementation_impact": {
+    "production_paths_changed": [
+      "example/client.mjs",
+      "example/index.html"
+    ],
+    "production_bytes": {
+      "example/client.mjs": {
+        "before": 3950,
+        "after": 12733
+      },
+      "example/index.html": {
+        "before": 7971,
+        "after": 9685
+      }
+    },
+    "translation_keys_per_language": 49,
+    "booking_schema": "v1, unchanged",
+    "locale_preference_key": "coworking-reservas:locale:v1",
+    "dependency_package_versions_unchanged": true
+  },
+  "test_first_commit": "ce8a12e8a3db64d732c783f63721a3971060e922",
+  "local_language_mutation": {
+    "commit": "2bc82f8771d22b69d98809564db97ab550f74edf",
+    "old_spanish_oracle": "passes",
+    "new_language_oracle": "rejects",
+    "pass": 33,
+    "fail": 1,
+    "failed_case": "en: rejects equal and reversed intervals"
+  },
+  "scope": "Local browser reservations. User titles, ISO booking dates and HH:mm values remain language independent; native input widgets follow browser or OS conventions.",
+  "digest_provenance": "ZIP digests are declared by the authenticated GitHub Actions API; downloaded report and input hashes were independently checked against the cited Git commit."
+}
