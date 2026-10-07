@@ -2,16 +2,16 @@
 
 ## Criterios de aceptación
 
-- [ ] [AC-1] Crear una reserva válida y mostrar sus datos con `npm run test:ui`.
-- [ ] [AC-2] Rechazar fin anterior o igual al inicio con `npm run test:functional` y `npm run test:ui`.
-- [ ] [AC-3] Rechazar reservas solapadas de una misma sala y fecha con `npm run test:functional` y `npm run test:ui`.
-- [ ] [AC-4] Permitir intervalos contiguos con `npm run test:functional` y `npm run test:ui`.
-- [ ] [AC-5] Mantener disponibilidad independiente por sala y fecha con `npm run test:functional` y `npm run test:ui`.
-- [ ] [AC-6] Cancelar la reserva solicitada y liberar su horario con `npm run test:functional` y `npm run test:ui`.
-- [ ] [AC-7] Conservar reservas al recargar y reiniciar el navegador con `npm run test:ui`.
-- [ ] [AC-8] Detectar los cinco defectos deliberados y rechazar evidencia manipulada con `npm run test:adversarial`.
-- [ ] [AC-9] Validar contratos y comprobar el oráculo y hashes de Board con `npm run validate:kdd` y `npm run probe:board`.
-- [ ] [CI-1] Verificar el baseline explícitamente aprobado y sus controles en Ubuntu y Windows con `npm run verify:quality`, y cerrar contra un run previo autenticado.
+- [x] [AC-1] Crear una reserva válida y mostrar sus datos con `npm run test:ui`.
+- [x] [AC-2] Rechazar fin anterior o igual al inicio con `npm run test:functional` y `npm run test:ui`.
+- [x] [AC-3] Rechazar reservas solapadas de una misma sala y fecha con `npm run test:functional` y `npm run test:ui`.
+- [x] [AC-4] Permitir intervalos contiguos con `npm run test:functional` y `npm run test:ui`.
+- [x] [AC-5] Mantener disponibilidad independiente por sala y fecha con `npm run test:functional` y `npm run test:ui`.
+- [x] [AC-6] Cancelar la reserva solicitada y liberar su horario con `npm run test:functional` y `npm run test:ui`.
+- [x] [AC-7] Conservar reservas al recargar y reiniciar el navegador con `npm run test:ui`.
+- [x] [AC-8] Detectar los cinco defectos deliberados y rechazar evidencia manipulada con `npm run test:adversarial`.
+- [x] [AC-9] Validar contratos y comprobar el oráculo y hashes de Board con `npm run validate:kdd` y `npm run probe:board`.
+- [x] [CI-1] Verificar el baseline explícitamente aprobado y sus controles en Ubuntu y Windows con `npm run verify:quality`, y cerrar contra un run previo autenticado.
 
 ## Restricciones
 
@@ -28,3 +28,11 @@ Intervalos semiabiertos: 10:00-11:00 y 11:00-12:00 son compatibles. La cancelaci
 conserva el historial. Datos guardados en el navegador; no hay sincronización entre
 usuarios, servicios externos, autenticación real ni pagos. Los siete casos UI usan
 datos de fecha fijos y sesiones independientes; no dependen del reloj del equipo.
+
+## Cierre verificado
+
+Criterios cerrados contra https://github.com/MauricioPerera/coworking-reservas-kdd/actions/runs/37684277952
+(intento 1, SHA aprobado ccab5ee9871338afcf9497ed54130cf7267b0624).
+Ver docs/reports/CONTRACT-01-REPORT.md y CONTRACT-01-EVIDENCE.json para la
+evidencia por criterio y la auditoría de los artefactos. El CI posterior
+autentica el run previo y comprueba el perímetro documental del cierre.

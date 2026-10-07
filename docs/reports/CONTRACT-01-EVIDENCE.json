@@ -1,0 +1,172 @@
+{
+  "schema_version": 1,
+  "spec": "specs/CONTRACT-01-reservas.md",
+  "state": "verified_in_ci",
+  "ci": {
+    "run_url": "https://github.com/MauricioPerera/coworking-reservas-kdd/actions/runs/37684277952",
+    "head_sha": "ccab5ee9871338afcf9497ed54130cf7267b0624",
+    "run_attempt": 1
+  },
+  "approved_baseline": "ccab5ee9871338afcf9497ed54130cf7267b0624",
+  "human_approval": {
+    "source": "Explicit human reply in this chat to the review request displaying the complete SHA and public repository MauricioPerera/coworking-reservas-kdd",
+    "response": "Adelante autorizo"
+  },
+  "criteria": {
+    "AC-1": {
+      "status": "verified_in_ci",
+      "evidence": "Chromium: reserva válida con título, sala, fecha y horas mostrados; siete casos PASS en cada ejecución; https://github.com/MauricioPerera/coworking-reservas-kdd/actions/runs/37684277952"
+    },
+    "AC-2": {
+      "status": "verified_in_ci",
+      "evidence": "Funcional y Chromium: fin anterior o igual al inicio rechazados sin crear reservas; 35 tests funcionales PASS; https://github.com/MauricioPerera/coworking-reservas-kdd/actions/runs/37684277952"
+    },
+    "AC-3": {
+      "status": "verified_in_ci",
+      "evidence": "Funcional y Chromium: solapamientos en la misma sala y fecha rechazados; se conserva la reserva original; https://github.com/MauricioPerera/coworking-reservas-kdd/actions/runs/37684277952"
+    },
+    "AC-4": {
+      "status": "verified_in_ci",
+      "evidence": "Funcional y Chromium: intervalos contiguos permitidos, con ambos límites comprobados en dominio; https://github.com/MauricioPerera/coworking-reservas-kdd/actions/runs/37684277952"
+    },
+    "AC-5": {
+      "status": "verified_in_ci",
+      "evidence": "Funcional y Chromium: mismo horario permitido en salas distintas y en fechas distintas de la misma sala; https://github.com/MauricioPerera/coworking-reservas-kdd/actions/runs/37684277952"
+    },
+    "AC-6": {
+      "status": "verified_in_ci",
+      "evidence": "Funcional y Chromium: cancelar el ID solicitado conserva otras reservas y libera el intervalo para una reserva nueva; https://github.com/MauricioPerera/coworking-reservas-kdd/actions/runs/37684277952"
+    },
+    "AC-7": {
+      "status": "verified_in_ci",
+      "evidence": "Chromium: reserva conservada tras recargar y reiniciar el navegador; persistencia funcional con seis tests PASS; https://github.com/MauricioPerera/coworking-reservas-kdd/actions/runs/37684277952"
+    },
+    "AC-8": {
+      "status": "verified_in_ci",
+      "evidence": "Adversarial: 49 PASS, incluidos 44 controles de reportes y cinco mutantes detectados por assertions protegidas; https://github.com/MauricioPerera/coworking-reservas-kdd/actions/runs/37684277952"
+    },
+    "AC-9": {
+      "status": "verified_in_ci",
+      "evidence": "KDD: cuatro contratos y sus comandos PASS; Board verifica oráculo, un test Node externo y hashes vigentes; https://github.com/MauricioPerera/coworking-reservas-kdd/actions/runs/37684277952"
+    },
+    "CI-1": {
+      "status": "verified_in_ci",
+      "evidence": "https://github.com/MauricioPerera/coworking-reservas-kdd/actions/runs/37684277952"
+    }
+  },
+  "artifacts": [
+    {
+      "platform": "ubuntu-24.04",
+      "id": 11509694457,
+      "name": "acceptance-ubuntu-24.04-ccab5ee9871338afcf9497ed54130cf7267b0624",
+      "digest": "sha256:7e5a1762c00de962621a9316131447cda7199883f908a6f84dbd8add7588b67b",
+      "digest_source": "GitHub Actions API; archive digest was not independently recomputed",
+      "acceptance_runs": 6,
+      "cases_per_run": 7,
+      "board_verified": true,
+      "checked_reports": [
+        {
+          "directory": "0c938ff1-2aaf-4fe0-9270-a21adee12aa6",
+          "run_id": "01a1181e-2e13-7406-bfd1-2cb41914438e",
+          "report_sha256": "d0c9249db0642307a4a9caa49e910a293cc8dc3af3f503c7d658bdc093a723e6",
+          "ui_tests": 7
+        },
+        {
+          "directory": "196b6685-cb70-41fa-93a9-fcd3d6b671b4",
+          "run_id": "01a1181d-becb-7625-8e0a-f055c7855838",
+          "report_sha256": "77e85aeec12ab82e338778d35be7e03a7693d9f0144c3957ca4bdbbf1e94547a",
+          "ui_tests": 7
+        },
+        {
+          "directory": "62de8b75-0acd-45e4-b120-f61bffbce059",
+          "run_id": "01a1181d-f8ad-779d-b2e2-77cc272fb83e",
+          "report_sha256": "8bf636d5d4a199ffdb984b2c7796720953402f949f1cc8d0f036710e57193ab9",
+          "ui_tests": 7
+        },
+        {
+          "directory": "68ad61b4-c426-47ff-b683-a03ceaa22f86",
+          "run_id": "01a1181d-db2f-7e6a-b215-7a969c35a1a5",
+          "report_sha256": "e40e891f3149252e7282431502412997877f578f0ee2e32c87404d063ed5dea7",
+          "ui_tests": 7
+        },
+        {
+          "directory": "8f6fc2c0-2075-4dc7-bbac-f55b2d7794f8",
+          "run_id": "01a1181e-14fb-74ce-a939-9ed6b77e4767",
+          "report_sha256": "45ddd5d58e3833bb3239fc796c017ed3e4deff3bd31d529543d66059fc7a56ec",
+          "ui_tests": 7
+        },
+        {
+          "directory": "be68fa4f-e7a4-47a9-a38e-abfd9d350dbb",
+          "run_id": "01a1181e-469f-7a8a-89cf-df8cd80363af",
+          "report_sha256": "8805d12803cf49684efd79689166a49087f4a91debbd978aba8f93cbc17dd8bb",
+          "ui_tests": 7
+        }
+      ]
+    },
+    {
+      "platform": "windows-latest",
+      "id": 11509534602,
+      "name": "acceptance-windows-latest-ccab5ee9871338afcf9497ed54130cf7267b0624",
+      "digest": "sha256:57f01897233a8bd51d1e5f1d634e688084e25a3f7511753ebfa0200ba7e00672",
+      "digest_source": "GitHub Actions API; archive digest was not independently recomputed",
+      "acceptance_runs": 6,
+      "cases_per_run": 7,
+      "board_verified": true,
+      "checked_reports": [
+        {
+          "directory": "450dc64b-f1b8-4cb3-a924-3f4d9d4484b2",
+          "run_id": "01a1181e-1a31-730a-bcee-4c95ce13474a",
+          "report_sha256": "61b9663cfd5513ece51c0c0346f09e2955b27f890ab7c9c4609d221f87189542",
+          "ui_tests": 7
+        },
+        {
+          "directory": "7e207680-4c53-4e57-80f1-7ae13bf6115f",
+          "run_id": "01a1181d-659f-7946-b9f4-63ae3c449595",
+          "report_sha256": "d5e92c9887f893751edafe5a7037b81245d353ac80414e32a8f276e3cf97c62b",
+          "ui_tests": 7
+        },
+        {
+          "directory": "9b81a85e-30e1-4b59-8a2c-f20f7e729570",
+          "run_id": "01a1181d-2ae8-7693-bc8f-9e0944c5185e",
+          "report_sha256": "3b033786cefb005b4dca9f48e748f2a0c8fb99f8210d604ce5ad06c12e3dc189",
+          "ui_tests": 7
+        },
+        {
+          "directory": "9c3ddc57-197b-4572-b201-fc0b8de8af10",
+          "run_id": "01a1181d-ef75-7123-99ba-855b94f9c375",
+          "report_sha256": "7d6c8d13c88f3710ec662b10c4cd91b7afaa6404687e22c1dee1ccd17e9d088b",
+          "ui_tests": 7
+        },
+        {
+          "directory": "bba75863-7bf6-4391-8ae3-ad5193f51850",
+          "run_id": "01a1181e-3d1c-7e3c-a805-9559a886a420",
+          "report_sha256": "723fd9cf0148b504f713105b93382908828b97e9e50a1651a7d3481a7aab9073",
+          "ui_tests": 7
+        },
+        {
+          "directory": "fd3b65c5-4b26-4cd6-9a99-c99c1b15f4bf",
+          "run_id": "01a1181d-b239-7092-b16d-43a5d5e9f538",
+          "report_sha256": "2180e121f4402ad7b1bfce87e5322a8bee92bee3c6cb25d38cb97762dc6c2cb5",
+          "ui_tests": 7
+        }
+      ]
+    }
+  ],
+  "artifact_audit": {
+    "checked_at": "2026-10-07T20:48:21.454Z",
+    "reports": 12,
+    "input_files": 17,
+    "report_hashes_verified": true,
+    "input_hashes_match_cited_commit": true,
+    "board_hashes_match_cited_commit": true,
+    "authenticated_run_and_jobs": true
+  },
+  "development_sequence": {
+    "test_and_stub_commit": "5bdf8e0679c26012cf403c73ff2f7cdea517f940",
+    "implementation_scope": "Five production paths only in the implementation commit",
+    "red_domain_storage_tests": 25,
+    "bootstrap_followups": "Mutation harness assertion handling and three browser expectations were strengthened after the initial implementation and before human approval; the history and original failure logs were preserved."
+  },
+  "scope": "Local reservations for two rooms, one browser origin, calendar dates and HH:mm; persistence in browser storage.",
+  "digest_provenance": "Artifact ZIP digests are declared by the authenticated GitHub Actions API; downloaded report, input and Board hashes were independently checked against the cited Git commit."
+}
