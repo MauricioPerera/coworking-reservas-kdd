@@ -4,6 +4,12 @@ Prueba completa de contratos, oráculos y evidencia con kdd-e2e-acceptance.
 Aplicación local para reservar Sala Atlas y Sala Luna, cancelar reservas y
 conservarlas al recargar. Intervalos contiguos permitidos; solapamientos rechazados.
 
+La interfaz ofrece Español, English y Português mediante el selector del
+encabezado. Usa es-MX, en-US y pt-BR, con español por defecto. El idioma se
+conserva al recargar y cambiarlo mantiene los datos, títulos, borrador y filtros.
+Las fechas de la agenda siguen el formato elegido; los controles nativos de
+fecha y hora usan las convenciones del navegador o sistema.
+
 ## Preparación y uso
 
 Node 24.8 o posterior, Python 3.10 o posterior y Git. CI fija Node 24.16.0.
@@ -25,6 +31,7 @@ En Linux instalar también Chromium con sus dependencias de host:
 npm run test:functional
 npm run test:adversarial
 npm run test:ui
+npm run test:i18n
 npm run validate:kdd
 npm run probe:board
 ```
@@ -42,6 +49,12 @@ SHA completo revisado mediante KDD_QUALITY_APPROVED_REF desde fuera del código.
 La política protege los controles, autoriza solo cinco rutas de producción y
 ejecuta todos los checks dos veces. El spec permanece abierto hasta CI real en
 Ubuntu y Windows y cierre posterior que autentique un run exitoso anterior.
+
+La extensión de idiomas agrega un contrato y 34 comprobaciones de navegador
+(21 flujos de reservas y 13 checks adicionales). Sus controles nuevos requieren
+un baseline revisado explícitamente. Ver [el impacto medido](docs/I18N-IMPACT.md)
+y [los criterios de idiomas](specs/CONTRACT-02-idiomas.md); la evidencia y el
+cierre de CONTRACT-01 conservan su SHA histórico.
 
 ## Alcance
 
