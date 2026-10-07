@@ -22,6 +22,13 @@ El harness de mutaciones se corrigió en un commit separado: un rechazo incorrec
 de una operación válida debe convertirse en fallo de assertion del oráculo.
 Se mantuvieron todas las reglas y escenarios; el fallo anterior está conservado.
 
+Antes de aprobar el baseline, la auditoría de alcance reforzó tres expectativas
+de los mismos siete casos UI: comprobar la fecha y horas mostradas, rechazar
+inicio y fin iguales, y aceptar otra fecha en la misma sala y horario. Estas
+assertions adicionales quedan registradas después de la implementación inicial;
+no se presentan como parte del primer commit test-first. No cambia producción
+ni se eliminan expectativas para obtener resultados verdes.
+
 Los cinco defectos deliberados son aceptar solapamientos, rechazar intervalos
 contiguos, cancelar la reserva equivocada, impedir que la cancelación libere
 disponibilidad y perder los datos guardados. Cada mutante parte de controles que
