@@ -1,8 +1,9 @@
 import { createServer } from 'node:http';
 import { readFileSync } from 'node:fs';
 const files = {
-  '/': ['index.html', 'text/html'], '/todos': ['index.html', 'text/html'],
-  '/client.mjs': ['client.mjs', 'text/javascript'], '/todo-model.mjs': ['todo-model.mjs', 'text/javascript'],
+  '/': ['index.html', 'text/html'], '/reservas': ['index.html', 'text/html'],
+  '/client.mjs': ['client.mjs', 'text/javascript'], '/booking-model.mjs': ['booking-model.mjs', 'text/javascript'],
+  '/booking-storage.mjs': ['booking-storage.mjs', 'text/javascript'],
 };
 const server = createServer((request, response) => {
   let pathname;
