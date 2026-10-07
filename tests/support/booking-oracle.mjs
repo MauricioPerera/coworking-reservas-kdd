@@ -61,4 +61,6 @@ export const scenarios = [
     assert.equal(model.reserveBooking(model.emptyState(),draft({title})).bookings[0].title,title);
   }],
 ];
-export function checkBookings(model) { for (const [,check] of scenarios) check(model); }
+export function checkBookings(model) {
+  for (const [name,check] of scenarios) assert.doesNotThrow(() => check(model), name);
+}
