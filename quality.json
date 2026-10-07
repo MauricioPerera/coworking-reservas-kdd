@@ -43,7 +43,9 @@
     "tests/support/fixtures.mjs",
     "tests/support/storage-oracle.mjs",
     "tests/ui-oracle.test.mjs",
-    "tooling.json"
+    "tooling.json",
+    "tests/locale-ui.test.mjs",
+    "knowledge/contracts/booking-locales.md"
   ],
   "implementation": [
     "example/booking-model.mjs",
@@ -60,7 +62,11 @@
     "specs/CONTRACT-01-reservas.md",
     "docs/reports/CONTRACT-01-REPORT.md",
     "docs/reports/CONTRACT-01-EVIDENCE.json",
-    "CHANGELOG.md"
+    "CHANGELOG.md",
+    "docs/I18N-IMPACT.md",
+    "specs/CONTRACT-02-idiomas.md",
+    "docs/reports/CONTRACT-02-REPORT.md",
+    "docs/reports/CONTRACT-02-EVIDENCE.json"
   ],
   "required_kinds": [
     "functional",
@@ -112,6 +118,16 @@
         "node",
         "--test",
         "tests/ui-oracle.test.mjs"
+      ],
+      "timeout": 60
+    },
+    {
+      "name": "ui-languages",
+      "kind": "ui",
+      "argv": [
+        "node",
+        "--test",
+        "tests/locale-ui.test.mjs"
       ],
       "timeout": 60
     }

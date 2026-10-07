@@ -81,6 +81,8 @@
     "example/booking-storage.mjs",
     "example/client.mjs",
     "example/index.html",
-    "example/server.mjs"
+    "example/server.mjs",
+    "tests/locale-ui.test.mjs",
+    "knowledge/contracts/booking-locales.md"
   ]
 }
