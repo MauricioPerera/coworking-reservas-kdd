@@ -1,5 +1,6 @@
 import { emptyState, reserveBooking, cancelBooking } from './booking-model.mjs';
 import { loadState, saveState } from './booking-storage.mjs';
+import {createSharedSession,decorateShared} from './shared-client.mjs';
 
 export const TRANSLATIONS = Object.freeze({
   es: Object.freeze({
@@ -65,6 +66,8 @@ const output = document.getElementById('result');
 const language = document.getElementById('language');
 const languageOutput = document.getElementById('language-result');
 let locale = 'es', state = emptyState(), filter = 'all', lastMessage = null, preferenceFailed = false;
+const shared=location.pathname==='/compartidas';
+let remote,connection={connected:!shared,busy:false,loading:shared};
 try { const saved = localStorage.getItem(localeKey); if (Object.hasOwn(locales, saved)) locale = saved; } catch {}
 function translate(key, values = {}) {
   return (TRANSLATIONS[locale][key] ?? TRANSLATIONS.es[key]).replace(/\{(\w+)\}/g, (_, name) => String(values[name]));
@@ -82,12 +85,15 @@ function applyLanguage() {
   for (const element of document.querySelectorAll('[data-i18n-placeholder]')) element.setAttribute('placeholder', translate(element.dataset.i18nPlaceholder));
   for (const element of document.querySelectorAll('[data-i18n-aria]')) element.setAttribute('aria-label', translate(element.dataset.i18nAria));
   render(); renderMessages();
+  decorateShared(locale,shared,connection);
 }
 function formatDate(date) {
   return new Intl.DateTimeFormat(locales[locale], { year: 'numeric', month: '2-digit', day: '2-digit', timeZone: 'UTC' }).format(new Date(`${date}T00:00:00Z`));
 }
-try { state = loadState(localStorage); }
-catch (error) { message(errorKey(error, 'readError'), true); document.getElementById('confirm').disabled = true; }
+if(!shared){
+  try { state = loadState(localStorage); }
+  catch (error) { message(errorKey(error, 'readError'), true); document.getElementById('confirm').disabled = true; }
+}
 function commit(next, success) {
   saveState(localStorage, next);
   state = next; render(); message(success);
@@ -107,18 +113,20 @@ function render() {
     const date = document.createElement('span'); date.textContent = `${formatDate(booking.date)} · ${booking.start} – ${booking.end}`;
     details.append(room, date); text.append(title, details);
     const cancel = document.createElement('button'); cancel.type = 'button'; cancel.className = 'cancel'; cancel.textContent = translate('cancel'); cancel.setAttribute('aria-label', translate('cancelLabel', { title: booking.title }));
-    cancel.addEventListener('click', () => {
-      try { commit(cancelBooking(state, booking.id), 'cancelled'); }
+    cancel.disabled=shared&&(!connection.connected||connection.busy);
+    cancel.addEventListener('click', async () => {
+      try { if(shared){await remote.cancel(booking.id);message('cancelled');}else commit(cancelBooking(state, booking.id), 'cancelled'); }
       catch (error) { message(errorKey(error, 'cancelError'), true); }
     });
     item.append(text, cancel); list.append(item);
   }
 }
-form.addEventListener('submit', event => {
+form.addEventListener('submit', async event => {
   event.preventDefault();
+  if(shared&&(!connection.connected||connection.busy))return;
   try {
     const draft = Object.fromEntries(new FormData(form));
-    commit(reserveBooking(state, draft), 'confirmed');
+    if(shared){await remote.reserve(draft);message('confirmed');}else commit(reserveBooking(state, draft), 'confirmed');
     document.getElementById('title').value = '';
   } catch (error) { message(errorKey(error, 'confirmError'), true); }
 });
@@ -136,3 +144,11 @@ language.addEventListener('change', () => {
   applyLanguage();
 });
 applyLanguage();
+if(shared){
+  remote=createSharedSession({onSnapshot(next){state=next;render();},onConnection(next){
+    connection=next;document.getElementById('confirm').disabled=!next.connected||next.busy;
+    for(const button of document.querySelectorAll('.cancel'))button.disabled=!next.connected||next.busy;
+    decorateShared(locale,true,next);
+  }});
+  remote.start();addEventListener('pagehide',()=>remote.close(),{once:true});
+}
