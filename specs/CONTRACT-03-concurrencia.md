@@ -2,16 +2,16 @@
 
 ## Criterios de aceptación
 
-- [ ] [AC-1] Confirmar exactamente una reserva ante solicitudes simultáneas idénticas o solapadas con `npm run test:shared`.
-- [ ] [AC-2] Conservar escrituras concurrentes válidas, IDs únicos, intervalos adyacentes y salas/fechas distintas con npm run test:shared-api.
-- [ ] [AC-3] Sincronizar dos agendas sin recarga en 5000 ms en el entorno declarado y rechazar snapshots atrasados con npm run test:shared-ui.
-- [ ] [AC-4] Cancelar solo el objetivo, conservar historial, comunicar repetición y liberar el intervalo con npm run test:shared.
-- [ ] [AC-5] Persistir después de reiniciar realmente el servidor y fallar sin falsa confirmación ante errores de escritura con npm run test:shared.
-- [ ] [AC-6] Mantener español, inglés y portugués, borradores, filtros, datos locales y layout móvil con npm run test:shared-ui.
-- [ ] [AC-7] Conservar los oráculos históricos y sus regresiones con los checks declarados, validate:kdd y probe:board.
-- [ ] [AC-8] Demostrar detección de un defecto deliberado de concurrencia y registrar su alcance local o CI.
-- [ ] [AC-9] Medir arquitectura, código, almacenamiento, cobertura, sincronización y coste de validación en docs/CONCURRENCY-IMPACT.md.
-- [ ] [CI-1] Revisar explícitamente el SHA nuevo, pasar gate y CI Ubuntu/Windows y cerrar contra un run previo autenticado.
+- [x] [AC-1] Confirmar exactamente una reserva ante solicitudes simultáneas idénticas o solapadas con `npm run test:shared`.
+- [x] [AC-2] Conservar escrituras concurrentes válidas, IDs únicos, intervalos adyacentes y salas/fechas distintas con npm run test:shared-api.
+- [x] [AC-3] Sincronizar dos agendas sin recarga en 5000 ms en el entorno declarado y rechazar snapshots atrasados con npm run test:shared-ui.
+- [x] [AC-4] Cancelar solo el objetivo, conservar historial, comunicar repetición y liberar el intervalo con npm run test:shared.
+- [x] [AC-5] Persistir después de reiniciar realmente el servidor y fallar sin falsa confirmación ante errores de escritura con npm run test:shared.
+- [x] [AC-6] Mantener español, inglés y portugués, borradores, filtros, datos locales y layout móvil con npm run test:shared-ui.
+- [x] [AC-7] Conservar los oráculos históricos y sus regresiones con los checks declarados, validate:kdd y probe:board.
+- [x] [AC-8] Demostrar detección de un defecto deliberado de concurrencia y registrar su alcance local o CI.
+- [x] [AC-9] Medir arquitectura, código, almacenamiento, cobertura, sincronización y coste de validación en docs/CONCURRENCY-IMPACT.md.
+- [x] [CI-1] Revisar explícitamente el SHA nuevo, pasar gate y CI Ubuntu/Windows y cerrar contra un run previo autenticado.
 
 ## Restricciones
 
