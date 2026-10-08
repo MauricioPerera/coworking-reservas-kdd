@@ -18,7 +18,10 @@
     "verify:quality": "node scripts/verify-quality.mjs",
     "install:browser": "node node_modules/playwright-core/cli.js install chromium",
     "start": "node example/server.mjs",
-    "test:i18n": "node --test tests/locale-ui.test.mjs"
+    "test:i18n": "node --test tests/locale-ui.test.mjs",
+    "test:shared-api": "node --test tests/shared-api.test.mjs",
+    "test:shared-ui": "node --test tests/shared-ui.test.mjs",
+    "test:shared": "node --test tests/shared-api.test.mjs tests/shared-ui.test.mjs"
   },
   "devDependencies": {
     "@e2e-dev/web": "0.12.0",

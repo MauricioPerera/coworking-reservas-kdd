@@ -37,3 +37,21 @@ time zones. Its reports and screenshots are kept in .e2e/locale-runs. Adding the
 oracle, its contract and policy entries requires a new explicit human-reviewed
 baseline before the quality gate can certify this revision. Historical closure
 reports retain their original SHA and CI run.
+
+## Shared booking prototype
+
+The next stage introduces /compartidas while /reservas remains browser-local.
+Shared sessions use a loopback HTTP API and one file-backed SQLite database.
+A BEGIN IMMEDIATE transaction encloses reading the current snapshot, applying
+the unchanged pure booking rules, writing the next snapshot and advancing a
+revision. The response announces success only after COMMIT. A failed commit
+rolls back. The browser polls the authoritative snapshot, ignores old revisions,
+preserves drafts and keeps language preference separate from shared data.
+
+This is a planned architecture until implementation and evidence establish it.
+Node 24.16.0 provides node:sqlite (release-candidate API); its synchronous calls
+and lock timeout suit this bounded local prototype, without a runtime package.
+No production authentication, public deployment or multi-server guarantee is
+claimed. Local browser bookings are not uploaded or migrated automatically.
+The new API and two-session browser oracles are sealed before implementation.
+Historical contracts and oracles retain their own evidence.

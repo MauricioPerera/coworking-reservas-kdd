@@ -7,3 +7,6 @@
 - [Report validation](./contracts/report-validation.md)
 
 - [Language presentation and browser regression](./contracts/booking-locales.md)
+
+- [Shared transactional API](./contracts/shared-booking-api.md)
+- [Shared browser synchronization](./contracts/shared-booking-ui.md)
