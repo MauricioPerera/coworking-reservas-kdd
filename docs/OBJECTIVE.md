@@ -1,7 +1,7 @@
 # Objetivo activo — Reservas compartidas y concurrencia
 
-Definido el 2026-10-07. Estado: objetivo activo; implementación y validación
-de esta etapa pendientes.
+Definido el 2026-10-07. Estado: objetivo activo; implementación candidata
+validada localmente. Revisión explícita del baseline, gate aprobado y CI pendientes.
 
 Implementar y validar un prototipo local en el que dos sesiones de usuario
 independientes comparten reservas mediante un backend con persistencia
@@ -63,7 +63,9 @@ para revisión; ninguna referencia se aprueba por deducirse de HEAD o de tests v
 Después se implementa, se recopila evidencia real, se verifica el CI y se cierran
 los criterios respaldados por sus resultados.
 
-Esta definición todavía no es un contrato sellado ni evidencia de implementación.
+La definición no sustituye al contrato sellado ni acredita el cierre. Los criterios
+están en specs/CONTRACT-03-concurrencia.md y la evidencia local en
+docs/CONCURRENCY-IMPACT.md; ambos distinguen resultados locales de CI pendiente.
 El objetivo se completa únicamente cuando los diez resultados se han demostrado.
 El repositorio original kdd-e2e-acceptance permanece intacto.
 

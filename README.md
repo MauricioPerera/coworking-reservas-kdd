@@ -58,6 +58,26 @@ cierre de CONTRACT-01 conservan su SHA histórico.
 
 ## Alcance
 
+### Candidato de reservas compartidas
+
+`/compartidas` añade una agenda común entre sesiones independientes, con reservas
+atómicas, sincronización automática y persistencia en un archivo SQLite del servidor.
+`/reservas` conserva el modo local; sus datos no se importan al servicio compartido.
+Ambos modos mantienen español, inglés y portugués. La versión comprobada usa
+Node 24.16.0 y su módulo SQLite incorporado, sin dependencias nuevas.
+
+Se ejecuta con el mismo `npm start`. `SHARED_DB_PATH` permite elegir la base;
+la ubicación por defecto es `.e2e/shared-data/bookings.sqlite` y debe conservarse
+si se limpian artefactos. El servidor se limita a loopback. Este prototipo no
+incluye autenticación de producción ni coordinación entre varios servidores.
+
+Los 15 checks de API y los 15 de navegador se ejecutan con `npm run test:shared`.
+Ver [objetivo](docs/OBJECTIVE.md), [criterios](specs/CONTRACT-03-concurrencia.md)
+y [mediciones](docs/CONCURRENCY-IMPACT.md). Los controles nuevos están pendientes
+de revisión humana del SHA y de CI; los cierres anteriores conservan su evidencia.
+
+### Modo local comprobado
+
 Reservas locales de un día, horas HH:mm y fechas de calendario válidas.
 La cancelación conserva historial; datos corruptos o fallos de almacenamiento
 se muestran sin sustituir silenciosamente los datos originales. No hay servidor
