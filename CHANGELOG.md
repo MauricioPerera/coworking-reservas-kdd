@@ -1,5 +1,15 @@
 # Changelog
 
+## Reservas compartidas — candidata para revisión
+
+- Modo /compartidas con snapshot SQLite transaccional, API JSON y revisión monótona.
+- Dos sesiones independientes sincronizan reservas y cancelaciones automáticamente;
+  el modo local, sus datos y los tres idiomas se conservan.
+- Dos oráculos sellados antes de implementar, 15 casos API y 15 de navegador;
+  una mutación local de snapshot obsoleto fue rechazada.
+- Impacto y evidencia local en docs/CONCURRENCY-IMPACT.md. Nueva aprobación explícita
+  del baseline, gate y CI de Ubuntu/Windows pendientes.
+
 ## Extensión de idiomas — candidata para revisión
 
 - Spanish (es-MX), English (en-US) and Brazilian Portuguese (pt-BR) presentation.

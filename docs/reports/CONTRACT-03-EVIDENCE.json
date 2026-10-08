@@ -1,0 +1,991 @@
+{
+  "schema_version": 1,
+  "spec": "specs/CONTRACT-03-concurrencia.md",
+  "state": "verified_in_ci",
+  "ci": {
+    "run_url": "https://github.com/MauricioPerera/coworking-reservas-kdd/actions/runs/37708918916",
+    "head_sha": "36f1eee5c232ab0483d9f23cb8def494cf18dae5",
+    "run_attempt": 2
+  },
+  "approved_baseline": "36f1eee5c232ab0483d9f23cb8def494cf18dae5",
+  "human_approval": {
+    "source": "User reply to the full SHA and the explicit request to approve it as baseline and merge only after all gates and CI pass in this chat",
+    "response": "continua"
+  },
+  "criteria": {
+    "AC-1": {
+      "status": "verified_in_ci",
+      "evidence": "15 casos API y 15 UI PASS por suite, con dos POST de navegadores aislados liberados mediante barrera en es-MX, en-US y pt-BR: exactamente un 201 y un 409; https://github.com/MauricioPerera/coworking-reservas-kdd/actions/runs/37708918916"
+    },
+    "AC-2": {
+      "status": "verified_in_ci",
+      "evidence": "Doce escrituras paralelas se conservan con IDs únicos; intervalos adyacentes, salas y fechas distintas se aceptan sin pérdida de actualizaciones; https://github.com/MauricioPerera/coworking-reservas-kdd/actions/runs/37708918916"
+    },
+    "AC-3": {
+      "status": "verified_in_ci",
+      "evidence": "Dos agendas convergen sin recarga dentro de 5000 ms; 210 observaciones de convergencia y caso de snapshot atrasado PASS. El reloj empieza al comprobar la convergencia después de la operación, no en COMMIT; https://github.com/MauricioPerera/coworking-reservas-kdd/actions/runs/37708918916"
+    },
+    "AC-4": {
+      "status": "verified_in_ci",
+      "evidence": "Cancelación concurrente comunica 200 y 409 ALREADY_CANCELLED, conserva historial y otra reserva, y permite reutilizar solo el intervalo liberado; https://github.com/MauricioPerera/coworking-reservas-kdd/actions/runs/37708918916"
+    },
+    "AC-5": {
+      "status": "verified_in_ci",
+      "evidence": "Reinicio real del servidor con SIGKILL conserva reservas y cancelaciones; ambos clientes se reconectan. Trigger SQLite y bloqueo de escritor verifican rollback sin falsa confirmación; https://github.com/MauricioPerera/coworking-reservas-kdd/actions/runs/37708918916"
+    },
+    "AC-6": {
+      "status": "verified_in_ci",
+      "evidence": "Tres idiomas, borrador, sala, filtros, preferencia individual, datos privados del navegador y layout de 390 px PASS en dos sesiones independientes; https://github.com/MauricioPerera/coworking-reservas-kdd/actions/runs/37708918916"
+    },
+    "AC-7": {
+      "status": "verified_in_ci",
+      "evidence": "Oráculos y cierres históricos conservan sus bytes; 35 funcionales, 49 adversariales, siete casos originales de navegador, 34 checks de idiomas, siete contratos KDD y KDD Board PASS; https://github.com/MauricioPerera/coworking-reservas-kdd/actions/runs/37708918916"
+    },
+    "AC-8": {
+      "status": "locally_verified",
+      "evidence": "Mutación local aislada 258cceb4f66e01572835442ef62ee33df949e5fd reutiliza un snapshot vacío: el oráculo API rechaza ocho casos y pasan siete; las 25 pruebas originales de dominio/almacenamiento pasan. No se atribuye esta mutación a CI"
+    },
+    "AC-9": {
+      "status": "verified_in_ci",
+      "evidence": "docs/CONCURRENCY-IMPACT.md registra arquitectura, bytes, almacenamiento, cobertura y costes locales; este reporte y el manifiesto añaden cinco intervalos API/UI y 105 observaciones de convergencia por plataforma obtenidos de artefactos autenticados; https://github.com/MauricioPerera/coworking-reservas-kdd/actions/runs/37708918916"
+    },
+    "CI-1": {
+      "status": "verified_in_ci",
+      "evidence": "https://github.com/MauricioPerera/coworking-reservas-kdd/actions/runs/37708918916"
+    }
+  },
+  "artifacts": [
+    {
+      "platform": "ubuntu-24.04",
+      "id": 11520674462,
+      "name": "acceptance-ubuntu-24.04-36f1eee5c232ab0483d9f23cb8def494cf18dae5",
+      "digest": "sha256:4b6842e45f73c0226f5b9c9cc10959dda6ef4729e681a1abc3647ef2b2518f1c",
+      "digest_source": "GitHub Actions API; archive digest was not independently recomputed",
+      "acceptance_runs": 6,
+      "cases_per_run": 7,
+      "locale_runs": 5,
+      "locale_cases_per_run": 34,
+      "shared_api_runs": 5,
+      "shared_ui_runs": 5,
+      "shared_cases_per_run": 15,
+      "board_verified": true,
+      "checked_reports": [
+        {
+          "directory": "3fdf3480-1da9-4adc-958e-dc61b6e2439d",
+          "run_id": "01a118f7-3940-7bec-99e0-20cc0b1ee669",
+          "report_sha256": "86da95a09b6911442533798f196ed139e09066ceb93e3c360a2c4ba8d5372f5b",
+          "ui_tests": 7
+        },
+        {
+          "directory": "68f9add9-4b21-4ec9-949e-657db74defb6",
+          "run_id": "01a118f7-cf66-7aa1-8629-692a34eb7ccc",
+          "report_sha256": "575ef1fe64ecc1531c4316d4caf3903ffcb310ca953f020dbc3bd1463288cb07",
+          "ui_tests": 7
+        },
+        {
+          "directory": "7339cfb8-a075-455f-977a-22c04cd43bc6",
+          "run_id": "01a118f9-c548-743e-9d02-995a74b48cd3",
+          "report_sha256": "05d22f9a25c7a7e7e4ce297d3d5c707a028a2150417164007bedaf277270901f",
+          "ui_tests": 7
+        },
+        {
+          "directory": "9346cb38-03cd-48fe-9912-2bf01bd518f9",
+          "run_id": "01a118f8-6a0b-72ac-bff4-dd752e25c733",
+          "report_sha256": "d12afe6773d1df0c6c280a6aaac0d87c035ca720148ae0d84333ba03444ac604",
+          "ui_tests": 7
+        },
+        {
+          "directory": "cd75892f-ea3b-4d30-b4e1-fcd26b71ce38",
+          "run_id": "01a118f8-ff77-76a5-a6c2-b10f04febde2",
+          "report_sha256": "bc47d3e282d81c88ad3ac30371626ec46fc3202b5eba72869ea572a0d1574502",
+          "ui_tests": 7
+        },
+        {
+          "directory": "d2a8d8df-1deb-455c-b448-d5508bdedcc5",
+          "run_id": "01a118fa-3090-7cbd-995b-4580ece4b44c",
+          "report_sha256": "ea69367abb098802af4af797595c45657d15c7b60fde3a71ec9978f75ef07103",
+          "ui_tests": 7
+        }
+      ],
+      "checked_locale_reports": [
+        {
+          "directory": "2e584520-ad8b-4867-ab7f-03191690c0b3",
+          "report_sha256": "cd16df56c489561e66ff92a1d2b3dcc34054dbf75919d5be7f2b26cdb41c88e2",
+          "cases": 34,
+          "matrix_cases": 21,
+          "duration_ms": 8737,
+          "screenshots_sha256": {
+            "es-desktop.png": "8869816c104a91459d6e0685c7e11c9f2e68c833be441cb9e7268e79640b5668",
+            "es-mobile.png": "965a2a053c6d788d90a2f48c805de902805b9f3e755c358a1331c1eff8eb266a",
+            "en-desktop.png": "b01b49e5f886a95df677a23b41e469a7b062d6a689b2a36d0840d8d5138f6a8b",
+            "en-mobile.png": "6ee05512f762a5bcb24686b788d281e8a36be4543da8acba09c397c80f56a23b",
+            "pt-desktop.png": "5e7abda5d06513c6245386f5bef756ea2654363a32cdecd74553be98f79b369d",
+            "pt-mobile.png": "d4f8d24a322c64b6109c085b85c99a6796f1d621854f999efe204530036a8576"
+          }
+        },
+        {
+          "directory": "30371763-b9c1-432c-9772-635912d17f9f",
+          "report_sha256": "54709aa60fe3500774303ca3860b943cdfe24163ff5d4816d3ade75dc81b0709",
+          "cases": 34,
+          "matrix_cases": 21,
+          "duration_ms": 8920,
+          "screenshots_sha256": {
+            "es-desktop.png": "8869816c104a91459d6e0685c7e11c9f2e68c833be441cb9e7268e79640b5668",
+            "es-mobile.png": "965a2a053c6d788d90a2f48c805de902805b9f3e755c358a1331c1eff8eb266a",
+            "en-desktop.png": "b01b49e5f886a95df677a23b41e469a7b062d6a689b2a36d0840d8d5138f6a8b",
+            "en-mobile.png": "6ee05512f762a5bcb24686b788d281e8a36be4543da8acba09c397c80f56a23b",
+            "pt-desktop.png": "5e7abda5d06513c6245386f5bef756ea2654363a32cdecd74553be98f79b369d",
+            "pt-mobile.png": "d4f8d24a322c64b6109c085b85c99a6796f1d621854f999efe204530036a8576"
+          }
+        },
+        {
+          "directory": "8e4f866a-dde7-496c-86d4-489ed37682bf",
+          "report_sha256": "f2d2c1d8d645d94f14cdd7ed96dc9a05db1ec871992b4cb904561555ea2cfd52",
+          "cases": 34,
+          "matrix_cases": 21,
+          "duration_ms": 8613,
+          "screenshots_sha256": {
+            "es-desktop.png": "8869816c104a91459d6e0685c7e11c9f2e68c833be441cb9e7268e79640b5668",
+            "es-mobile.png": "965a2a053c6d788d90a2f48c805de902805b9f3e755c358a1331c1eff8eb266a",
+            "en-desktop.png": "b01b49e5f886a95df677a23b41e469a7b062d6a689b2a36d0840d8d5138f6a8b",
+            "en-mobile.png": "6ee05512f762a5bcb24686b788d281e8a36be4543da8acba09c397c80f56a23b",
+            "pt-desktop.png": "5e7abda5d06513c6245386f5bef756ea2654363a32cdecd74553be98f79b369d",
+            "pt-mobile.png": "d4f8d24a322c64b6109c085b85c99a6796f1d621854f999efe204530036a8576"
+          }
+        },
+        {
+          "directory": "93f26bb3-808c-49e9-ab05-2af9abbe9dcd",
+          "report_sha256": "056d9ab5cf7c832f422d17e57f35af8c7b29ff8f5cce5a0c8c1beb3d55efd491",
+          "cases": 34,
+          "matrix_cases": 21,
+          "duration_ms": 8571,
+          "screenshots_sha256": {
+            "es-desktop.png": "8869816c104a91459d6e0685c7e11c9f2e68c833be441cb9e7268e79640b5668",
+            "es-mobile.png": "965a2a053c6d788d90a2f48c805de902805b9f3e755c358a1331c1eff8eb266a",
+            "en-desktop.png": "b01b49e5f886a95df677a23b41e469a7b062d6a689b2a36d0840d8d5138f6a8b",
+            "en-mobile.png": "6ee05512f762a5bcb24686b788d281e8a36be4543da8acba09c397c80f56a23b",
+            "pt-desktop.png": "5e7abda5d06513c6245386f5bef756ea2654363a32cdecd74553be98f79b369d",
+            "pt-mobile.png": "d4f8d24a322c64b6109c085b85c99a6796f1d621854f999efe204530036a8576"
+          }
+        },
+        {
+          "directory": "b67460c1-31e7-4b0c-891d-a1fe65b2cb31",
+          "report_sha256": "104d728cc867140783d0282d0c83a60975ed46980bb82cbee3301e7bc0d9ad60",
+          "cases": 34,
+          "matrix_cases": 21,
+          "duration_ms": 8969,
+          "screenshots_sha256": {
+            "es-desktop.png": "8869816c104a91459d6e0685c7e11c9f2e68c833be441cb9e7268e79640b5668",
+            "es-mobile.png": "965a2a053c6d788d90a2f48c805de902805b9f3e755c358a1331c1eff8eb266a",
+            "en-desktop.png": "b01b49e5f886a95df677a23b41e469a7b062d6a689b2a36d0840d8d5138f6a8b",
+            "en-mobile.png": "6ee05512f762a5bcb24686b788d281e8a36be4543da8acba09c397c80f56a23b",
+            "pt-desktop.png": "5e7abda5d06513c6245386f5bef756ea2654363a32cdecd74553be98f79b369d",
+            "pt-mobile.png": "d4f8d24a322c64b6109c085b85c99a6796f1d621854f999efe204530036a8576"
+          }
+        }
+      ],
+      "checked_shared_reports": [
+        {
+          "directory": "0456684b-7ce3-4f59-8c83-5e709cbba822",
+          "suite": "api",
+          "report_sha256": "eb53af7b79036ce0e9ea69fea3a1c8cc8702b5b91648ae2ef45d876d82b12179",
+          "cases": 15,
+          "duration_ms": 3380,
+          "real_process_restart": {
+            "type": "real-process-restart",
+            "oldPid": 11348,
+            "newPid": 11356
+          }
+        },
+        {
+          "directory": "0de01e81-b3a8-4d60-9094-c1b69cef39a2",
+          "suite": "ui",
+          "report_sha256": "64e10a929bd4a0271936ebbd2ab576ff32ea70eb767982ba9a915c8b3bc173f5",
+          "cases": 15,
+          "duration_ms": 19013,
+          "convergence_ms": [
+            455,
+            551,
+            744,
+            37,
+            627,
+            615,
+            529,
+            766,
+            4,
+            631,
+            530,
+            636,
+            708,
+            679,
+            598,
+            679,
+            563,
+            2,
+            2,
+            2,
+            2
+          ],
+          "screenshots_sha256": {
+            "es-shared.png": "5decf8e87537124c37ab7786702038c72befb58ac13788c11fb2d156d0ca6a91",
+            "es-shared-mobile.png": "87ee4fa21fe85b5b9cb8ec0d0646ae553048e6750f846d94dfcfc5b3e7d252e0",
+            "en-shared.png": "012f613a5491bfb7999f19ead8d385664c50f33d48855332d3d3c30d031559e2",
+            "en-shared-mobile.png": "867b47f1c71dc41dde7bf43bc9352975e48f5b49bd581752cc2eaac853c788aa",
+            "pt-shared.png": "a4bf9402c69f023980dbb63320efb80db1b00653cbd671d9acd745ccbb542cb9",
+            "pt-shared-mobile.png": "0da3839cb7599fec7bfbba1eb343e44eae5541d5ee8dd9e7d97ef99fbc9f1b8a"
+          }
+        },
+        {
+          "directory": "24e24a9d-89b7-4ec8-8446-932cb9926acc",
+          "suite": "api",
+          "report_sha256": "671b3a65f3b4ce7a60d7c562792fac96858cb33937d3f05d1038bc6ae7b170d3",
+          "cases": 15,
+          "duration_ms": 1513,
+          "real_process_restart": {
+            "type": "real-process-restart",
+            "oldPid": 6976,
+            "newPid": 6984
+          }
+        },
+        {
+          "directory": "48f88f67-7fd8-427a-ba52-7fbeb5f3d09b",
+          "suite": "ui",
+          "report_sha256": "8117701a881dc907d8878dce3c14e8cf539ab4bcfaf843512cdbc7a057ed676d",
+          "cases": 15,
+          "duration_ms": 20446,
+          "convergence_ms": [
+            459,
+            630,
+            751,
+            713,
+            609,
+            529,
+            631,
+            740,
+            705,
+            629,
+            551,
+            628,
+            737,
+            703,
+            624,
+            667,
+            660,
+            2,
+            2,
+            2,
+            2
+          ],
+          "screenshots_sha256": {
+            "es-shared.png": "5decf8e87537124c37ab7786702038c72befb58ac13788c11fb2d156d0ca6a91",
+            "es-shared-mobile.png": "87ee4fa21fe85b5b9cb8ec0d0646ae553048e6750f846d94dfcfc5b3e7d252e0",
+            "en-shared.png": "7dac2717a09278528b863e4c95d01c158eb676950e13e45159baef5624dea90f",
+            "en-shared-mobile.png": "867b47f1c71dc41dde7bf43bc9352975e48f5b49bd581752cc2eaac853c788aa",
+            "pt-shared.png": "a4bf9402c69f023980dbb63320efb80db1b00653cbd671d9acd745ccbb542cb9",
+            "pt-shared-mobile.png": "0da3839cb7599fec7bfbba1eb343e44eae5541d5ee8dd9e7d97ef99fbc9f1b8a"
+          }
+        },
+        {
+          "directory": "59aa72fa-2065-4bee-9278-e9bedf8a3ef5",
+          "suite": "ui",
+          "report_sha256": "4c81ad1682be60edcbee64c46cbbd224d9824e5a8ee8db84e98113afb65796ec",
+          "cases": 15,
+          "duration_ms": 19076,
+          "convergence_ms": [
+            569,
+            548,
+            751,
+            30,
+            625,
+            618,
+            655,
+            736,
+            713,
+            598,
+            637,
+            523,
+            760,
+            31,
+            603,
+            670,
+            646,
+            2,
+            2,
+            2,
+            2
+          ],
+          "screenshots_sha256": {
+            "es-shared.png": "c071f118311ed10795850117ad5257d597fd8b3c26b326e30e97ddcf10a1ae77",
+            "es-shared-mobile.png": "87ee4fa21fe85b5b9cb8ec0d0646ae553048e6750f846d94dfcfc5b3e7d252e0",
+            "en-shared.png": "012f613a5491bfb7999f19ead8d385664c50f33d48855332d3d3c30d031559e2",
+            "en-shared-mobile.png": "867b47f1c71dc41dde7bf43bc9352975e48f5b49bd581752cc2eaac853c788aa",
+            "pt-shared.png": "50ed0e3bcdf2f92026308be6c439e0d9c90aacada0419d9164c9e1de70e4bb87",
+            "pt-shared-mobile.png": "0da3839cb7599fec7bfbba1eb343e44eae5541d5ee8dd9e7d97ef99fbc9f1b8a"
+          }
+        },
+        {
+          "directory": "5abf44c5-cdcb-4845-884b-7e513219c2de",
+          "suite": "api",
+          "report_sha256": "d9da13f4a97110e3d29d93579df9fe207af59d65089ab78123a334d5f107f9f8",
+          "cases": 15,
+          "duration_ms": 1467,
+          "real_process_restart": {
+            "type": "real-process-restart",
+            "oldPid": 13095,
+            "newPid": 13103
+          }
+        },
+        {
+          "directory": "5c49d0a9-b2be-44b3-b6b5-8315552bb3b3",
+          "suite": "ui",
+          "report_sha256": "1475d086ca8bafcc45794ddaed7c3de0fb8645968a7a1f2f6dfe7396c868eaf5",
+          "cases": 15,
+          "duration_ms": 18928,
+          "convergence_ms": [
+            571,
+            551,
+            755,
+            30,
+            602,
+            526,
+            636,
+            735,
+            713,
+            626,
+            551,
+            552,
+            708,
+            30,
+            628,
+            668,
+            677,
+            2,
+            2,
+            3,
+            2
+          ],
+          "screenshots_sha256": {
+            "es-shared.png": "c071f118311ed10795850117ad5257d597fd8b3c26b326e30e97ddcf10a1ae77",
+            "es-shared-mobile.png": "87ee4fa21fe85b5b9cb8ec0d0646ae553048e6750f846d94dfcfc5b3e7d252e0",
+            "en-shared.png": "7dac2717a09278528b863e4c95d01c158eb676950e13e45159baef5624dea90f",
+            "en-shared-mobile.png": "867b47f1c71dc41dde7bf43bc9352975e48f5b49bd581752cc2eaac853c788aa",
+            "pt-shared.png": "a4bf9402c69f023980dbb63320efb80db1b00653cbd671d9acd745ccbb542cb9",
+            "pt-shared-mobile.png": "0da3839cb7599fec7bfbba1eb343e44eae5541d5ee8dd9e7d97ef99fbc9f1b8a"
+          }
+        },
+        {
+          "directory": "7b13e878-e0de-47b5-8a90-1b6635b82335",
+          "suite": "ui",
+          "report_sha256": "c7d22c8788df5069ad84c524936b98a9392f0b1f0b366150265f8caa110a9cfa",
+          "cases": 15,
+          "duration_ms": 19255,
+          "convergence_ms": [
+            565,
+            630,
+            748,
+            708,
+            605,
+            628,
+            491,
+            742,
+            57,
+            596,
+            531,
+            529,
+            759,
+            56,
+            600,
+            654,
+            651,
+            3,
+            2,
+            2,
+            2
+          ],
+          "screenshots_sha256": {
+            "es-shared.png": "c071f118311ed10795850117ad5257d597fd8b3c26b326e30e97ddcf10a1ae77",
+            "es-shared-mobile.png": "87ee4fa21fe85b5b9cb8ec0d0646ae553048e6750f846d94dfcfc5b3e7d252e0",
+            "en-shared.png": "012f613a5491bfb7999f19ead8d385664c50f33d48855332d3d3c30d031559e2",
+            "en-shared-mobile.png": "867b47f1c71dc41dde7bf43bc9352975e48f5b49bd581752cc2eaac853c788aa",
+            "pt-shared.png": "a4bf9402c69f023980dbb63320efb80db1b00653cbd671d9acd745ccbb542cb9",
+            "pt-shared-mobile.png": "0da3839cb7599fec7bfbba1eb343e44eae5541d5ee8dd9e7d97ef99fbc9f1b8a"
+          }
+        },
+        {
+          "directory": "b41446a5-e86f-4491-a2e3-0678ffd1c555",
+          "suite": "api",
+          "report_sha256": "2c33ccc2cc91ded2fb95e0e690712c2f7660e87c70266a06a37c93c77dfdcf04",
+          "cases": 15,
+          "duration_ms": 1556,
+          "real_process_restart": {
+            "type": "real-process-restart",
+            "oldPid": 9239,
+            "newPid": 9247
+          }
+        },
+        {
+          "directory": "c3526fe5-12d7-487b-af32-eec555035c81",
+          "suite": "api",
+          "report_sha256": "ddbc6f0d5fc7c3dee6945596fe8f28a63dbcd21ed410d82d38eab6221bfb2a2f",
+          "cases": 15,
+          "duration_ms": 1507,
+          "real_process_restart": {
+            "type": "real-process-restart",
+            "oldPid": 4853,
+            "newPid": 4861
+          }
+        }
+      ]
+    },
+    {
+      "platform": "windows-latest",
+      "id": 11520902349,
+      "name": "acceptance-windows-latest-36f1eee5c232ab0483d9f23cb8def494cf18dae5",
+      "digest": "sha256:862a139a721809b0f6b97e90010978612f43b901f7303c2e9c0eeae45d5fe552",
+      "digest_source": "GitHub Actions API; archive digest was not independently recomputed",
+      "acceptance_runs": 6,
+      "cases_per_run": 7,
+      "locale_runs": 5,
+      "locale_cases_per_run": 34,
+      "shared_api_runs": 5,
+      "shared_ui_runs": 5,
+      "shared_cases_per_run": 15,
+      "board_verified": true,
+      "checked_reports": [
+        {
+          "directory": "48615d4a-3f73-4dce-912f-4d26f6d0f294",
+          "run_id": "01a118f7-dae4-71cc-80e7-d23222f52ce7",
+          "report_sha256": "31ade250a546be32c874dca3095746ee4814e5f31a45cfcaed32b594e51c73fd",
+          "ui_tests": 7
+        },
+        {
+          "directory": "59829ec6-166b-4d17-9d82-86c7a6e9a483",
+          "run_id": "01a118f9-11a0-79ef-b3b9-7f99baf4cf6a",
+          "report_sha256": "90b2404a456a5bc0b100fba5575e5309c937b46ba05eddf29d3b53cdc8e4c32a",
+          "ui_tests": 7
+        },
+        {
+          "directory": "74879509-41ff-4973-afa5-a9582181c4c6",
+          "run_id": "01a118fa-3c19-7d3d-b204-7fb4f4242f4f",
+          "report_sha256": "941d8a871b69ff7b5ab8c9e4ad58528af8761601688450f34b82e8f94d0b4442",
+          "ui_tests": 7
+        },
+        {
+          "directory": "bd65f386-1d39-4008-aac7-becb1c9e4408",
+          "run_id": "01a118fc-7b37-72e9-8001-4f88f5ec1c75",
+          "report_sha256": "0030bc088add29329554f672b7a8ac822d17fab8a41aaaf6a4937ff366753bee",
+          "ui_tests": 7
+        },
+        {
+          "directory": "c1e00945-bbf0-4f6d-887f-2488fd43bc3e",
+          "run_id": "01a118fd-0b3b-7822-a5c7-3b78f3397c23",
+          "report_sha256": "876df1d5b72c48455339939ad4ced9e81d4fc474fcdd31b804ca027f67dae6ee",
+          "ui_tests": 7
+        },
+        {
+          "directory": "d8c259c2-43fe-4503-a847-34b31ad2b031",
+          "run_id": "01a118fb-4783-72c7-865a-f982a018e937",
+          "report_sha256": "dd13dc85e62130d4303d3813be176cc4eac853007330b3f00f097bbf0f70cb0a",
+          "ui_tests": 7
+        }
+      ],
+      "checked_locale_reports": [
+        {
+          "directory": "553c5ca4-37b7-4e8a-8770-b0d345a8ed7c",
+          "report_sha256": "83ec882c2fe9dfea8db2615263b763bcbb0b20f3a21eec9138268caf2d11e965",
+          "cases": 34,
+          "matrix_cases": 21,
+          "duration_ms": 15775,
+          "screenshots_sha256": {
+            "es-desktop.png": "7cdfe5a578aa633b8a570c1ce0dbae4a91da7f079bd6caa017cfb633607e9570",
+            "es-mobile.png": "72d2db40cf1ff6aed0193bfdbaf0bdf1f04bb9aee29158e4ee8419cb89368b84",
+            "en-desktop.png": "32f62ac2bd5c45427b7816ada606cfc4551e155bb593fb88831060514e77d6d2",
+            "en-mobile.png": "8cade83a737647476179f375734b1203abb66f4a4e456f0919e5e74ce4584133",
+            "pt-desktop.png": "d81ba9b4964c62ee840cae9bd8393e9933a1bfb28f7f318d8454aa616a7a252d",
+            "pt-mobile.png": "24ffc3d518695fff557b7a1bfee0adfc85e0bda86ca82eada473ef5d9e85ff70"
+          }
+        },
+        {
+          "directory": "6499a4f6-8868-4aa8-a96d-f387a5bad03f",
+          "report_sha256": "dad9fcb5a2ab60bd1461354b0e01e2d8d17185761fb57de888ab5a2c1acd732f",
+          "cases": 34,
+          "matrix_cases": 21,
+          "duration_ms": 16079,
+          "screenshots_sha256": {
+            "es-desktop.png": "7cdfe5a578aa633b8a570c1ce0dbae4a91da7f079bd6caa017cfb633607e9570",
+            "es-mobile.png": "72d2db40cf1ff6aed0193bfdbaf0bdf1f04bb9aee29158e4ee8419cb89368b84",
+            "en-desktop.png": "32f62ac2bd5c45427b7816ada606cfc4551e155bb593fb88831060514e77d6d2",
+            "en-mobile.png": "8cade83a737647476179f375734b1203abb66f4a4e456f0919e5e74ce4584133",
+            "pt-desktop.png": "d81ba9b4964c62ee840cae9bd8393e9933a1bfb28f7f318d8454aa616a7a252d",
+            "pt-mobile.png": "24ffc3d518695fff557b7a1bfee0adfc85e0bda86ca82eada473ef5d9e85ff70"
+          }
+        },
+        {
+          "directory": "65999da2-4b91-400d-962d-205d64e76c4a",
+          "report_sha256": "bb7ff5c1e42010f5de7f2f3004573ab5ce5ac5679360fb91fa2601ea97de9c96",
+          "cases": 34,
+          "matrix_cases": 21,
+          "duration_ms": 25792,
+          "screenshots_sha256": {
+            "es-desktop.png": "7cdfe5a578aa633b8a570c1ce0dbae4a91da7f079bd6caa017cfb633607e9570",
+            "es-mobile.png": "72d2db40cf1ff6aed0193bfdbaf0bdf1f04bb9aee29158e4ee8419cb89368b84",
+            "en-desktop.png": "32f62ac2bd5c45427b7816ada606cfc4551e155bb593fb88831060514e77d6d2",
+            "en-mobile.png": "8cade83a737647476179f375734b1203abb66f4a4e456f0919e5e74ce4584133",
+            "pt-desktop.png": "d81ba9b4964c62ee840cae9bd8393e9933a1bfb28f7f318d8454aa616a7a252d",
+            "pt-mobile.png": "24ffc3d518695fff557b7a1bfee0adfc85e0bda86ca82eada473ef5d9e85ff70"
+          }
+        },
+        {
+          "directory": "ae9f04ee-ce24-409b-af6b-7cc98c3c14ff",
+          "report_sha256": "b3fb28028c04584a21954ec54cafb2b9fb3f7a810fe35a2f976192a65ff1ff25",
+          "cases": 34,
+          "matrix_cases": 21,
+          "duration_ms": 15365,
+          "screenshots_sha256": {
+            "es-desktop.png": "7cdfe5a578aa633b8a570c1ce0dbae4a91da7f079bd6caa017cfb633607e9570",
+            "es-mobile.png": "72d2db40cf1ff6aed0193bfdbaf0bdf1f04bb9aee29158e4ee8419cb89368b84",
+            "en-desktop.png": "32f62ac2bd5c45427b7816ada606cfc4551e155bb593fb88831060514e77d6d2",
+            "en-mobile.png": "8cade83a737647476179f375734b1203abb66f4a4e456f0919e5e74ce4584133",
+            "pt-desktop.png": "d81ba9b4964c62ee840cae9bd8393e9933a1bfb28f7f318d8454aa616a7a252d",
+            "pt-mobile.png": "24ffc3d518695fff557b7a1bfee0adfc85e0bda86ca82eada473ef5d9e85ff70"
+          }
+        },
+        {
+          "directory": "e52fc405-58d9-4846-9a34-b4583b7ad6bb",
+          "report_sha256": "f97545bb7b520238abd3c40976f954dce9c54f4c2114ba7f3ce31e436f910393",
+          "cases": 34,
+          "matrix_cases": 21,
+          "duration_ms": 15428,
+          "screenshots_sha256": {
+            "es-desktop.png": "7cdfe5a578aa633b8a570c1ce0dbae4a91da7f079bd6caa017cfb633607e9570",
+            "es-mobile.png": "72d2db40cf1ff6aed0193bfdbaf0bdf1f04bb9aee29158e4ee8419cb89368b84",
+            "en-desktop.png": "32f62ac2bd5c45427b7816ada606cfc4551e155bb593fb88831060514e77d6d2",
+            "en-mobile.png": "8cade83a737647476179f375734b1203abb66f4a4e456f0919e5e74ce4584133",
+            "pt-desktop.png": "d81ba9b4964c62ee840cae9bd8393e9933a1bfb28f7f318d8454aa616a7a252d",
+            "pt-mobile.png": "24ffc3d518695fff557b7a1bfee0adfc85e0bda86ca82eada473ef5d9e85ff70"
+          }
+        }
+      ],
+      "checked_shared_reports": [
+        {
+          "directory": "290a5a71-7503-42e1-8ee9-d41c158d1375",
+          "suite": "api",
+          "report_sha256": "ca8ea1eb36a5e9da50ce82e58ffe70079c368562f9c3654287207c17481e655b",
+          "cases": 15,
+          "duration_ms": 3065,
+          "real_process_restart": {
+            "type": "real-process-restart",
+            "oldPid": 6000,
+            "newPid": 8912
+          }
+        },
+        {
+          "directory": "60188d0a-28b8-4cfb-857c-59cc1710899f",
+          "suite": "ui",
+          "report_sha256": "d9e9cef2e6af0f774cf357803cbdc1885462cda2dbafc9340e307900bf54ba28",
+          "cases": 15,
+          "duration_ms": 23478,
+          "convergence_ms": [
+            562,
+            482,
+            744,
+            35,
+            574,
+            399,
+            581,
+            757,
+            683,
+            515,
+            436,
+            405,
+            757,
+            126,
+            520,
+            638,
+            646,
+            5,
+            4,
+            4,
+            4
+          ],
+          "screenshots_sha256": {
+            "es-shared.png": "c784bcb78761f04be4f21815e59a8e59c8d8b602681711ee014a0ec8d399f882",
+            "es-shared-mobile.png": "62b533ca50720adbe3b37db17cf0a2e1c2b6b7c12cc3aa44bdbc8afe3e3e5e28",
+            "en-shared.png": "6cb29f4f0e696d684decd58b8fe7972e2585a1ed8e7c10cfdcf83b0f6cb34a2b",
+            "en-shared-mobile.png": "c5d12dfbf225acadd9a2ebcc11e2c378620824f399d273121b0186aee93deb3e",
+            "pt-shared.png": "0ebac7d369f2f2b275fa974f71012479c821fa6ccbf0ab0f19e30244f2dbc757",
+            "pt-shared-mobile.png": "12832567d709670611660a9b00967b35bc6dae06a4eea2cc2f2ca98522819076"
+          }
+        },
+        {
+          "directory": "6bcdbf88-ad43-480f-9c3b-4c964a961b0e",
+          "suite": "ui",
+          "report_sha256": "e41e9ff285afb017af0e88d2dc4b335c37995f42d5dcdc125429edb54b3f7fd2",
+          "cases": 15,
+          "duration_ms": 22067,
+          "convergence_ms": [
+            536,
+            427,
+            721,
+            107,
+            545,
+            590,
+            394,
+            785,
+            94,
+            535,
+            597,
+            409,
+            768,
+            99,
+            516,
+            659,
+            674,
+            4,
+            4,
+            3,
+            4
+          ],
+          "screenshots_sha256": {
+            "es-shared.png": "c784bcb78761f04be4f21815e59a8e59c8d8b602681711ee014a0ec8d399f882",
+            "es-shared-mobile.png": "62b533ca50720adbe3b37db17cf0a2e1c2b6b7c12cc3aa44bdbc8afe3e3e5e28",
+            "en-shared.png": "86cfc006deab5a98b9415fb2a3cbe115825d8a258f226dd3e7bb84455edcaf69",
+            "en-shared-mobile.png": "c5d12dfbf225acadd9a2ebcc11e2c378620824f399d273121b0186aee93deb3e",
+            "pt-shared.png": "0911481cf2135593731579b86dc8104d1031beb4ef16246e019bb02b7be74458",
+            "pt-shared-mobile.png": "12832567d709670611660a9b00967b35bc6dae06a4eea2cc2f2ca98522819076"
+          }
+        },
+        {
+          "directory": "7d487b22-2905-411d-a4f9-f5b246ad5c9b",
+          "suite": "api",
+          "report_sha256": "d0a2f2a00e9d12c1f799273bfdf9681b26f35981adb9df5f9abd472b76d9e217",
+          "cases": 15,
+          "duration_ms": 3094,
+          "real_process_restart": {
+            "type": "real-process-restart",
+            "oldPid": 4240,
+            "newPid": 1372
+          }
+        },
+        {
+          "directory": "8a607f03-c107-4219-9053-70d268c6f50e",
+          "suite": "ui",
+          "report_sha256": "69524a4a4436428e7b3cd08965f88ce8c247f1b369da84f68a17b055ef0ebfc9",
+          "cases": 15,
+          "duration_ms": 23683,
+          "convergence_ms": [
+            562,
+            390,
+            738,
+            131,
+            516,
+            387,
+            579,
+            776,
+            729,
+            486,
+            570,
+            578,
+            768,
+            695,
+            519,
+            647,
+            674,
+            5,
+            4,
+            4,
+            4
+          ],
+          "screenshots_sha256": {
+            "es-shared.png": "c784bcb78761f04be4f21815e59a8e59c8d8b602681711ee014a0ec8d399f882",
+            "es-shared-mobile.png": "62b533ca50720adbe3b37db17cf0a2e1c2b6b7c12cc3aa44bdbc8afe3e3e5e28",
+            "en-shared.png": "6cb29f4f0e696d684decd58b8fe7972e2585a1ed8e7c10cfdcf83b0f6cb34a2b",
+            "en-shared-mobile.png": "c5d12dfbf225acadd9a2ebcc11e2c378620824f399d273121b0186aee93deb3e",
+            "pt-shared.png": "0911481cf2135593731579b86dc8104d1031beb4ef16246e019bb02b7be74458",
+            "pt-shared-mobile.png": "12832567d709670611660a9b00967b35bc6dae06a4eea2cc2f2ca98522819076"
+          }
+        },
+        {
+          "directory": "c23b96f5-0241-49e7-82c5-1b4baf1e6aec",
+          "suite": "api",
+          "report_sha256": "79ad37acb5f5e2659e09b1fc4ef5e621c098f1a17d6f29309f550c1fac8ade31",
+          "cases": 15,
+          "duration_ms": 3101,
+          "real_process_restart": {
+            "type": "real-process-restart",
+            "oldPid": 2504,
+            "newPid": 6092
+          }
+        },
+        {
+          "directory": "c2833d12-4800-4dca-827a-46c6fd3e89a0",
+          "suite": "ui",
+          "report_sha256": "d6b6fdf8740795488a2165df013abd6a659ee92019195f3a4fc5b40c9e90ec99",
+          "cases": 15,
+          "duration_ms": 22943,
+          "convergence_ms": [
+            517,
+            578,
+            753,
+            709,
+            506,
+            606,
+            227,
+            770,
+            256,
+            353,
+            584,
+            429,
+            768,
+            128,
+            515,
+            659,
+            640,
+            4,
+            4,
+            4,
+            3
+          ],
+          "screenshots_sha256": {
+            "es-shared.png": "c784bcb78761f04be4f21815e59a8e59c8d8b602681711ee014a0ec8d399f882",
+            "es-shared-mobile.png": "62b533ca50720adbe3b37db17cf0a2e1c2b6b7c12cc3aa44bdbc8afe3e3e5e28",
+            "en-shared.png": "86cfc006deab5a98b9415fb2a3cbe115825d8a258f226dd3e7bb84455edcaf69",
+            "en-shared-mobile.png": "c5d12dfbf225acadd9a2ebcc11e2c378620824f399d273121b0186aee93deb3e",
+            "pt-shared.png": "0911481cf2135593731579b86dc8104d1031beb4ef16246e019bb02b7be74458",
+            "pt-shared-mobile.png": "12832567d709670611660a9b00967b35bc6dae06a4eea2cc2f2ca98522819076"
+          }
+        },
+        {
+          "directory": "c94a7f89-0c28-4857-be9a-4d27d60d4e7d",
+          "suite": "api",
+          "report_sha256": "8572cb427546485d771cc6d508b4f2b886b58c5111abf5463d20e6cccd01dd70",
+          "cases": 15,
+          "duration_ms": 3200,
+          "real_process_restart": {
+            "type": "real-process-restart",
+            "oldPid": 4800,
+            "newPid": 8068
+          }
+        },
+        {
+          "directory": "ca837581-101c-4ef6-9274-e6047a73d7c1",
+          "suite": "ui",
+          "report_sha256": "d4a89f47783f99e7a1cd624f393acb3744f6dee9355cd1161cd81f0919a7e5cf",
+          "cases": 15,
+          "duration_ms": 22577,
+          "convergence_ms": [
+            562,
+            411,
+            746,
+            132,
+            500,
+            419,
+            600,
+            745,
+            710,
+            506,
+            613,
+            423,
+            772,
+            94,
+            537,
+            632,
+            627,
+            5,
+            6,
+            5,
+            3
+          ],
+          "screenshots_sha256": {
+            "es-shared.png": "c784bcb78761f04be4f21815e59a8e59c8d8b602681711ee014a0ec8d399f882",
+            "es-shared-mobile.png": "62b533ca50720adbe3b37db17cf0a2e1c2b6b7c12cc3aa44bdbc8afe3e3e5e28",
+            "en-shared.png": "6cb29f4f0e696d684decd58b8fe7972e2585a1ed8e7c10cfdcf83b0f6cb34a2b",
+            "en-shared-mobile.png": "c5d12dfbf225acadd9a2ebcc11e2c378620824f399d273121b0186aee93deb3e",
+            "pt-shared.png": "0911481cf2135593731579b86dc8104d1031beb4ef16246e019bb02b7be74458",
+            "pt-shared-mobile.png": "12832567d709670611660a9b00967b35bc6dae06a4eea2cc2f2ca98522819076"
+          }
+        },
+        {
+          "directory": "cbf1181d-981e-4679-8a8f-a3903c380ee7",
+          "suite": "api",
+          "report_sha256": "19d3153ca15ecac7aa8349073b84bf38010f18519f014bd48bd6901b47b57418",
+          "cases": 15,
+          "duration_ms": 2870,
+          "real_process_restart": {
+            "type": "real-process-restart",
+            "oldPid": 7596,
+            "newPid": 4212
+          }
+        }
+      ]
+    }
+  ],
+  "artifact_audit": {
+    "checked_at": "2026-10-08T00:51:54.133Z",
+    "reports": 12,
+    "locale_reports": 10,
+    "shared_api_reports": 10,
+    "shared_ui_reports": 10,
+    "input_files": 27,
+    "locale_input_files": 10,
+    "shared_input_files": 16,
+    "shared_tests_per_suite": 15,
+    "report_hashes_verified": true,
+    "input_hashes_match_cited_commit": true,
+    "board_hashes_match_cited_commit": true,
+    "authenticated_run_and_jobs": true,
+    "browser_post_barriers_verified": true,
+    "real_restart_traces_verified": true,
+    "shared_cleanup_verified": true
+  },
+  "validation_timings": [
+    {
+      "platform": "ubuntu-24.04",
+      "api_interval_seconds": {
+        "observations": 5,
+        "min": 1.467,
+        "max": 3.38,
+        "mean": 1.8846
+      },
+      "ui_interval_seconds": {
+        "observations": 5,
+        "min": 18.928,
+        "max": 20.446,
+        "mean": 19.343600000000002
+      },
+      "convergence_ms": {
+        "observations": 105,
+        "min": 2,
+        "max": 766,
+        "mean": 468.4
+      }
+    },
+    {
+      "platform": "windows-latest",
+      "api_interval_seconds": {
+        "observations": 5,
+        "min": 2.87,
+        "max": 3.2,
+        "mean": 3.0660000000000003
+      },
+      "ui_interval_seconds": {
+        "observations": 5,
+        "min": 22.067,
+        "max": 23.683,
+        "mean": 22.9496
+      },
+      "convergence_ms": {
+        "observations": 105,
+        "min": 3,
+        "max": 785,
+        "mean": 430.2
+      }
+    }
+  ],
+  "test_first_commit": "cb4fca2b9b1aa633c8ac015cd24329af50a3eff3",
+  "implementation_commit": "8b3e7cc5a8712b0d83d5cfcfa3c3aacf6e074d11",
+  "point_of_departure": "301ae148d8846f6d7912a665ab9b8095c3617a35",
+  "sealed_oracle_sha256": {
+    "api": "bd45986ef95c74013bf12175b2269c1851477ac47534c0aa773689b177e4a26b",
+    "ui": "8e8a568763ddb6411b31b2ac5b4a787fcf8ee6a8c817198e916e33e3cdb93f7e"
+  },
+  "local_test_first_reports": [
+    {
+      "directory": "2f536321-9629-4491-93d1-1653b6929378",
+      "commit": "cb4fca2b9b1aa633c8ac015cd24329af50a3eff3",
+      "suite": "ui",
+      "status": "failed",
+      "sha256": "924e3c872b2f85483a11fa62f73c20fad7a4f42ab048caad36764316b5ea40b5"
+    },
+    {
+      "directory": "32010568-c3c1-4975-8293-d7e7ed5ddb2b",
+      "commit": "cb4fca2b9b1aa633c8ac015cd24329af50a3eff3",
+      "suite": "api",
+      "status": "failed",
+      "sha256": "719d4d70964b232dec967be47e5b686e026c005433378275dfd157e02fd3eff3"
+    }
+  ],
+  "local_concurrency_mutation": {
+    "commit": "258cceb4f66e01572835442ef62ee33df949e5fd",
+    "changed_path": "example/shared-store.mjs",
+    "defect": "Use a stale empty snapshot instead of current committed state",
+    "suite": "api",
+    "pass": 7,
+    "fail": 8,
+    "legacy_domain_and_storage_pass": 25,
+    "report_sha256": "95467484f92c30cc996f9cc4cd377f1e9a0cc6e575b8a30f77ebeddac773dad3",
+    "execution": "local_only"
+  },
+  "local_implementation_measurements": {
+    "production_bytes": {
+      "example/client.mjs": {
+        "before": 12733,
+        "after": 13689
+      },
+      "example/index.html": {
+        "before": 9685,
+        "after": 10361
+      },
+      "example/server.mjs": {
+        "before": 1036,
+        "after": 1744
+      },
+      "example/shared-api.mjs": {
+        "before": 0,
+        "after": 2154
+      },
+      "example/shared-client.mjs": {
+        "before": 0,
+        "after": 3956
+      },
+      "example/shared-store.mjs": {
+        "before": 0,
+        "after": 2227
+      }
+    },
+    "report_interval_timings": [
+      {
+        "suite": "api",
+        "observations": 2,
+        "intervalSeconds": {
+          "min": 12.126,
+          "max": 14.426,
+          "mean": 13.276
+        }
+      },
+      {
+        "suite": "ui",
+        "observations": 2,
+        "intervalSeconds": {
+          "min": 29.516,
+          "max": 30.714,
+          "mean": 30.115
+        }
+      }
+    ],
+    "synchronization": {
+      "observations": 42,
+      "limitMs": 5000,
+      "minMs": 2,
+      "maxMs": 700,
+      "meanMs": 327.2857142857143,
+      "clock_origin": "Start of convergence check after prior operation results/assertions; not server COMMIT"
+    },
+    "new_runtime_dependencies": 0,
+    "package_lock_unchanged": true
+  },
+  "local_quality": {
+    "approved_baseline_comparison": "passed",
+    "direct_pinned_policy_gate": "passed",
+    "npm_entry_point": "failed_environment_timeout",
+    "npm_launcher_limit_ms": 180000,
+    "note": "The local npm launcher timed out while its last UI suite was running. That invocation is not certified as passing. The unchanged npm entry point passed on both authenticated CI platforms."
+  },
+  "language_locales": {
+    "es": "es-MX",
+    "en": "en-US",
+    "pt": "pt-BR"
+  },
+  "scope": "One loopback service and two isolated browser sessions. Atomic transactional SQLite snapshot and polling every 750 ms; no production authentication, public deployment, bulk load or multi-server guarantee. Local browser bookings are not migrated.",
+  "digest_provenance": "Artifact ZIP digests are declared by the authenticated GitHub Actions API; downloaded report, input and screenshot hashes were independently checked. The ZIP archive digest was not independently recomputed."
+}

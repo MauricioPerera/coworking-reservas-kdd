@@ -83,6 +83,14 @@
     "example/index.html",
     "example/server.mjs",
     "tests/locale-ui.test.mjs",
-    "knowledge/contracts/booking-locales.md"
+    "knowledge/contracts/booking-locales.md",
+    "tests/shared-api.test.mjs",
+    "tests/shared-ui.test.mjs",
+    "tests/support/shared-fixture.mjs",
+    "knowledge/contracts/shared-booking-api.md",
+    "knowledge/contracts/shared-booking-ui.md",
+    "example/shared-store.mjs",
+    "example/shared-api.mjs",
+    "example/shared-client.mjs"
   ]
 }

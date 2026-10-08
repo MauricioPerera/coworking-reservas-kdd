@@ -45,14 +45,22 @@
     "tests/ui-oracle.test.mjs",
     "tooling.json",
     "tests/locale-ui.test.mjs",
-    "knowledge/contracts/booking-locales.md"
+    "knowledge/contracts/booking-locales.md",
+    "tests/shared-api.test.mjs",
+    "tests/shared-ui.test.mjs",
+    "tests/support/shared-fixture.mjs",
+    "knowledge/contracts/shared-booking-api.md",
+    "knowledge/contracts/shared-booking-ui.md"
   ],
   "implementation": [
     "example/booking-model.mjs",
     "example/booking-storage.mjs",
     "example/client.mjs",
     "example/index.html",
-    "example/server.mjs"
+    "example/server.mjs",
+    "example/shared-store.mjs",
+    "example/shared-api.mjs",
+    "example/shared-client.mjs"
   ],
   "pm": [
     "README.md",
@@ -66,7 +74,11 @@
     "docs/I18N-IMPACT.md",
     "specs/CONTRACT-02-idiomas.md",
     "docs/reports/CONTRACT-02-REPORT.md",
-    "docs/reports/CONTRACT-02-EVIDENCE.json"
+    "docs/reports/CONTRACT-02-EVIDENCE.json",
+    "specs/CONTRACT-03-concurrencia.md",
+    "docs/CONCURRENCY-IMPACT.md",
+    "docs/reports/CONTRACT-03-REPORT.md",
+    "docs/reports/CONTRACT-03-EVIDENCE.json"
   ],
   "required_kinds": [
     "functional",
@@ -128,6 +140,26 @@
         "node",
         "--test",
         "tests/locale-ui.test.mjs"
+      ],
+      "timeout": 60
+    },
+    {
+      "name": "shared-api",
+      "kind": "functional",
+      "argv": [
+        "node",
+        "--test",
+        "tests/shared-api.test.mjs"
+      ],
+      "timeout": 60
+    },
+    {
+      "name": "shared-ui",
+      "kind": "ui",
+      "argv": [
+        "node",
+        "--test",
+        "tests/shared-ui.test.mjs"
       ],
       "timeout": 60
     }
