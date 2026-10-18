@@ -76,11 +76,23 @@ jobs:
             --base-sha "$KDD_QUALITY_APPROVED_REF" \
             --workflow-path .github/workflows/acceptance.yml \
             --workflow-name 'KDD e2e acceptance'
-      - name: Preserve reports, logs and traces
+      - name: Preserve reports, logs and screenshots
         if: always()
         uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
         with:
           name: acceptance-${{ matrix.os }}-${{ github.sha }}
-          path: .e2e/
+          # Keep evidence paths and the existing artifact name for KDD consumers.
+          path: |
+            .e2e/
+            !.e2e/**/trace*.zip
           include-hidden-files: true
           if-no-files-found: warn
+      - name: Preserve browser traces for 14 days
+        if: always()
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        with:
+          name: acceptance-${{ matrix.os }}-${{ github.sha }}-traces
+          path: .e2e/**/trace*.zip
+          include-hidden-files: true
+          if-no-files-found: warn
+          retention-days: 14
